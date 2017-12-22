@@ -1,0 +1,66 @@
+
+<p>
+    <a routerLink="/admin/outlets/new" class="btn btn-primary">Add Outlet</a>
+</p>
+<p>
+    <input
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+>
+
+<data-table-column
+    [property]="'name'"
+    [header]="'Outlet Name'"
+    [sortable]="true"
+    [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+    [property]="'outletphone'"
+    [header]="'Phone No'"
+    [sortable]="true"
+    [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+    [property]="'subroad'"
+    [header]="'Sub Road '"
+    [sortable]="true"
+    [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+    [property]="'mainroad'"
+    [header]="'Main Road'"
+    [sortable]="true"
+    [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+    [property]="'city'"
+    [header]="'City'"
+    [sortable]="true"
+    [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+    [property]="'$key'"
+>
+<ng-template #dataTableCell let-item="item">
+  <a [routerLink]="['/admin/outlets/', item.$key]">Edit</a>
+</ng-template>
+</data-table-column>
+
+</data-table>

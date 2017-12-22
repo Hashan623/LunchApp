@@ -1,0 +1,129 @@
+
+<div style="margin: auto; max-width: 1500px; margin-bottom: 50px;">
+
+
+
+
+
+<p>
+  <a routerLink="/admin/riders/new" class="btn btn-primary">Add Riders</a>
+</p>
+<p>
+  <input
+  #query
+  (keyup)="filter(query.value)"
+  type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table  id="persons-grid"
+headerTitle="Riders"
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+
+
+  [rowTooltip]="rowTooltip"
+>
+
+<data-table-column
+  [property]="'name'"
+  [header]="'Name'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'phone'"
+  [header]="'Phone'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'address1'"
+  [header]="'Address No'"
+  [width]="150"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'address2'"
+  [header]="'Sub Road'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'address3'"
+  [header]="'Main Road'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+
+
+<data-table-column
+  [property]="'nic'"
+  [header]="'NIC'"
+  [sortable]="true"
+  [resizable]="true">
+</data-table-column>
+
+<!--
+<data-table-column
+  [property]="'googleid'"
+  [header]="'GoogleID'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+-->
+
+<data-table-column
+[property]="'active'"
+[header]="'Active'"
+[width]="100"
+[resizable]="true">
+
+<!-- <ng-template #dataTableCell let-item="item">
+    <span style="color: grey">
+
+<span class="button is-small btn-primary" *ngIf='!item.active' (click)='updateActive(0)'>Inactive</span>
+
+<span class="button is-small btn-primary" *ngIf='item.active' (click)='updateActive(1)'>Active</span>
+    </span>
+</ng-template> -->
+
+</data-table-column>
+
+
+
+<data-table-column
+  [property]="'avgrating'"
+  [header]="'AVGRating'"
+  [sortable]="true"
+  [resizable]="true"
+>
+
+</data-table-column>
+
+<data-table-column
+  [property]="'$key'"
+>
+<ng-template #dataTableCell let-item="item">
+<a [routerLink]="['/admin/riders/', item.$key]">Edit</a>
+</ng-template>
+</data-table-column>
+
+
+</data-table>
+
+
+</div>

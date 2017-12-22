@@ -1,0 +1,180 @@
+
+
+
+<div class="row">
+  <div class="col-md-8">
+      <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Outlet Name</label>
+            <div class="col-xs-10">
+                <input #name="ngModel" [(ngModel)]="outlet.name" name="name" id="name" type="text" class="form-control" required>
+                 <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                  Outlet Name is required!
+                 </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="outletphone">Outlet Contact No</label>
+            <input #outletphone="ngModel" [(ngModel)]="outlet.outletphone" name="outletphone" id="outletphone" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="outletphone.touched && outletphone.invalid">
+              <div *ngIf="outletphone.errors.required">Outlet Phone number is required!</div>
+              <div *ngIf="outletphone.errors.phone">Outlet Phone number not valid!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="ownername">Owner Name</label>
+            <input #ownername="ngModel" [(ngModel)]="outlet.ownername" name="ownername" id="ownername" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="ownername.touched && ownername.invalid">
+              Owner Name is required!
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="ownerphone">Owner Mobile</label>
+            <input #ownerphone="ngModel" [(ngModel)]="outlet.ownerphone" name="ownerphone" id="ownerphone" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="ownerphone.touched && ownerphone.invalid">
+              <div *ngIf="ownerphone.errors.required">Owner Mobile number is required!</div>
+              <div *ngIf="ownerphone.errors.phone">Owner Mobile number not valid!</div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="username">User Name</label>
+            <input #username="ngModel" [(ngModel)]="outlet.username" name="username" id="username" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+              User Name is required!
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="password">Password</label>
+            <input #password="ngModel" [(ngModel)]="outlet.password" name="password" id="password" type="password" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+              <div *ngIf="password.errors.required">Password is required!</div>
+            </div>
+          </div>
+        </div>
+
+<br>
+<hr>
+
+        <h4>Address</h4>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="addressnumber">Address No</label>
+            <input #addressnumber="ngModel" [(ngModel)]="outlet.addressnumber" [(ngModel)]="address.addressnumber" name="addressnumber" id="addressnumber" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="addressnumber.touched && addressnumber.invalid">
+              Address Number is required!
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="floor">Floor</label>
+            <input #floor="ngModel" [(ngModel)]="outlet.floor" [(ngModel)]="address.floor" name="floor" id="floor" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="floor.touched && floor.invalid">
+              Floor is required!
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="subroad">Sub Road </label>
+            <input #subroad="ngModel" [(ngModel)]="outlet.subroad" [(ngModel)]="address.subroad" name="subroad" id="subroad" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="subroad.touched && subroad.invalid">
+              Sub Road is required!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="mainroad">Main Road </label>
+            <input #mainroad="ngModel" [(ngModel)]="outlet.mainroad" [(ngModel)]="address.mainroad" name="mainroad" id="mainroad" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="mainroad.touched && mainroad.invalid">
+              Main Road is required!
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input #city="ngModel" [(ngModel)]="outlet.city" [(ngModel)]="address.city" name="city" id="city" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+              City is required!
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="latitude">Latitude</label>
+            <input #latitude="ngModel" [(ngModel)]="outlet.latitude" name="latitude" id="latitude" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="latitude.touched && latitude.invalid">
+              <div *ngIf="latitude.errors.required">Latitude is required!</div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="longtitude">Longtitude</label>
+            <input #longtitude="ngModel" [(ngModel)]="outlet.longtitude" name="longtitude" id="longtitudev" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="longtitude.touched && longtitude.invalid">
+              <div *ngIf="longtitude.errors.required">Longtitude is required!</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input #imageUrl="ngModel" [(ngModel)]="outlet.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+               <div *ngIf="imageUrl.errors.required">Image URL is required!</div>
+               <div *ngIf="imageUrl.errors.url">URL is invalid!</div>
+            </div>
+          </div>
+
+        <div class="form-row">
+          <!-- <div class="form-group col-md-6">
+            <label for="active">Active</label>
+            <input #active="ngModel" [(ngModel)]="outlet.active" name="active" id="active" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="active.touched && active.invalid">
+              <div *ngIf="active.errors.required">Active is required!</div>
+            </div>
+          </div> -->
+
+          <div class="col-auto form-group col-md-6">
+            <label for="active">Active</label>
+            <select class="custom-select" id="active" #active="ngModel" [(ngModel)]="outlet.active" name="active" class="form-control" type="number" required>
+              <option value="1">True</option>
+              <option value="0">False</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="active.touched && active.invalid">
+              <div *ngIf="active.errors.required">Active is required!</div>
+            </div>
+          </div>
+        </div>
+
+
+
+          <button class="btn btn-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
+          <br><br><br>
+
+
+        </form>
+  </div>
+  <div class="col-md-4">
+      <div *ngIf="outlet.name" class="card" style="width: 20rem;">
+          <img class="card-img-top" [src]="outlet.imageUrl" *ngIf="outlet.imageUrl">
+          <div class="card-body">
+            <h4 class="card-title">{{ outlet.name }}</h4>
+            <p class="card-text">{{ outlet.city }}</p>
+          </div>
+        </div>
+  </div>
+</div>
+

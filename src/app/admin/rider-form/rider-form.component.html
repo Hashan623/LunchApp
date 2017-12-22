@@ -1,0 +1,124 @@
+
+
+
+
+<div class="row">
+  <div class="col-md-8">
+      <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name">Rider Name</label>
+            <input #name="ngModel" [(ngModel)]="rider.name" name="name" id="name" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+              Name is required!
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="phone">Phone Number</label>
+            <input #phone="ngModel" [(ngModel)]="rider.phone" name="phone" id="phone" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+              <div *ngIf="phone.errors.required">Phone number is required!</div>
+              <div *ngIf="phone.errors.phone">Phone number not valid!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">   
+		      <div class="form-group col-md-6">
+            <label for="nic">NIC</label>
+            <input #nic="ngModel" [(ngModel)]="rider.nic" name="nic" id="nic" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="nic.touched && nic.invalid">
+                 NIC is required!
+              </div>
+          </div>
+
+		      <div class="form-group col-md-6">
+            <label for="googleid">GoogleID</label>
+            <input #googleid="ngModel" [(ngModel)]="rider.googleid" name="googleid" id="googleid" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="googleid.touched && googleid.invalid">
+                  GoogleID is required!
+              </div>
+          </div>
+         </div>  
+
+<hr>
+<br> 
+        
+        <div class="form-row">   
+          <div class="form-group col-md-6">
+            <label for="address1">Address 1</label>
+            <input #address1="ngModel" [(ngModel)]="rider.address1" name="address1" id="address1" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="address1.touched && address1.invalid">
+              Address is required!
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="address2">Address 2</label>
+            <input #address2="ngModel" [(ngModel)]="rider.address2" name="address2" id="address2" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="address2.touched && address2.invalid">
+                 Address is required!
+              </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="address3">Address 3</label>
+            <input #address3="ngModel" [(ngModel)]="rider.address3" name="address3" id="address3" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="address3.touched && address3.invalid">
+                 Address is required!
+              </div>
+          </div>
+        </div>
+
+
+
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input #imageUrl="ngModel" [(ngModel)]="rider.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+              <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+                  <div *ngIf="imageUrl.errors.required">Image URL is required!</div>
+                  <div *ngIf="imageUrl.errors.url">URL is invalid!</div>
+              </div>
+          </div>
+
+
+
+        <div class="form-row">
+		      <div class="form-group col-md-6">
+            <label for="avgrating">Avg Rating</label>
+            <input #avgrating="ngModel" [(ngModel)]="rider.avgrating" name="avgrating" id="avgrating" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="avgrating.touched && avgrating.invalid">
+                 Average Rating is required!
+              </div>
+          </div>
+
+          <div class="col-auto form-group col-md-6">
+            <label for="active">Active</label>
+            <select class="custom-select" id="active" #active="ngModel" [(ngModel)]="rider.active" name="active" class="form-control" type="number" required>
+              <option value="true">True</option>
+              <option value="false">False</option>       
+            </select>
+            <div class="alert alert-danger" *ngIf="active.touched && active.invalid">
+              <div *ngIf="active.errors.required">Active is required!</div>             
+            </div>
+          </div>
+
+        </div>
+
+          <button class="btn btn-primary">Save</button>
+        </form>
+  </div>
+  <div class="col-md-4">
+      <div *ngIf="rider.name" class="card" style="width: 20rem;">
+          <img class="card-img-top" [src]="rider.imageUrl" *ngIf="rider.imageUrl">
+          <div class="card-body">
+            <h4 class="card-title">{{ rider.name }}</h4>
+            <p class="card-text">{{ rider.address3 }}</p>
+          </div>
+        </div>
+  </div>
+</div>
+
+
+

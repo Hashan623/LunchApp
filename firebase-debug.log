@@ -1,0 +1,50 @@
+[debug] [2017-12-22T05:52:09.769Z] ----------------------------------------------------------------------
+[debug] [2017-12-22T05:52:09.769Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vimukthi lakmal\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] [2017-12-22T05:52:09.769Z] CLI Version:   3.16.0
+[debug] [2017-12-22T05:52:09.769Z] Platform:      win32
+[debug] [2017-12-22T05:52:09.769Z] Node Version:  v8.1.0
+[debug] [2017-12-22T05:52:09.769Z] Time:          Fri Dec 22 2017 11:22:09 GMT+0530 (Sri Lanka Standard Time)
+[debug] [2017-12-22T05:52:09.769Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-22T05:52:09.784Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2017-12-22T05:52:09.784Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  F:\LunchApp
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[debug] [2017-12-22T09:31:14.814Z] ----------------------------------------------------------------------
+[debug] [2017-12-22T09:31:14.814Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Vimukthi lakmal\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] [2017-12-22T09:31:14.814Z] CLI Version:   3.16.0
+[debug] [2017-12-22T09:31:14.814Z] Platform:      win32
+[debug] [2017-12-22T09:31:14.814Z] Node Version:  v8.1.0
+[debug] [2017-12-22T09:31:14.814Z] Time:          Fri Dec 22 2017 15:01:14 GMT+0530 (Sri Lanka Standard Time)
+[debug] [2017-12-22T09:31:14.814Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-22T09:31:14.829Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2017-12-22T09:31:14.829Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\LunchApp
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
