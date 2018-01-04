@@ -42,7 +42,7 @@ headerTitle="Riders"
 </data-table-column>
 
 <data-table-column
-  [property]="'address1'"
+  [property]="'addressnumber'"
   [header]="'Address No'"
   [width]="150"
   [sortable]="true"
@@ -51,7 +51,7 @@ headerTitle="Riders"
 </data-table-column>
 
 <data-table-column
-  [property]="'address2'"
+  [property]="'subroad'"
   [header]="'Sub Road'"
   [sortable]="true"
   [resizable]="true"
@@ -59,10 +59,18 @@ headerTitle="Riders"
 </data-table-column>
 
 <data-table-column
-  [property]="'address3'"
+  [property]="'mainroad'"
   [header]="'Main Road'"
   [sortable]="true"
   [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+[property]="'city'"
+[header]="'City'"
+[sortable]="true"
+[resizable]="true"
 >
 </data-table-column>
 
@@ -86,22 +94,13 @@ headerTitle="Riders"
 
 -->
 
-<data-table-column
+<!-- <data-table-column
 [property]="'active'"
 [header]="'Active'"
 [width]="100"
 [resizable]="true">
 
-<!-- <ng-template #dataTableCell let-item="item">
-    <span style="color: grey">
-
-<span class="button is-small btn-primary" *ngIf='!item.active' (click)='updateActive(0)'>Inactive</span>
-
-<span class="button is-small btn-primary" *ngIf='item.active' (click)='updateActive(1)'>Active</span>
-    </span>
-</ng-template> -->
-
-</data-table-column>
+</data-table-column> -->
 
 
 

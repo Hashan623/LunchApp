@@ -4,6 +4,7 @@ import { RiderService } from './../../rider.service';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table';
 
+import { Address } from './../../models/address';
 @Component({
    selector: 'app-admin-riders',
   templateUrl: './admin-riders.component.html',
@@ -15,6 +16,8 @@ export class AdminRidersComponent implements OnInit, OnDestroy {
 
 
   riders: Rider[];
+  address: Address[];
+
   subscription: Subscription;
   tableResource: DataTableResource<Rider>;
   items: Rider[] = [];
