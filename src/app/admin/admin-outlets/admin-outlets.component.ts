@@ -11,6 +11,7 @@ import { Address } from './../../models/address';
   styleUrls: ['./admin-outlets.component.css']
 })
 export class AdminOutletsComponent implements OnInit, OnDestroy {
+
   outlets: Outlet[];
   address: Address[];
 

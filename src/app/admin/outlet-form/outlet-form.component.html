@@ -65,10 +65,9 @@
         </div>
 
 <br>
-
+<hr>
 
         <h4>Address</h4>
-        <hr>
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="addressnumber">Address No</label>
@@ -165,8 +164,8 @@
           <div class="col-auto form-group col-md-6">
             <label for="active">Active</label>
             <br>
-          <label class="custom-control custom-radio">
-            <input id="active1" name="active" #active="ngModel" [(ngModel)]="outlet.active" type="radio" class="custom-control-input" value="1" >
+          <label class="custom-control custom-radio active">
+            <input id="active1" name="active" #active="ngModel" [(ngModel)]="outlet.active" type="radio" class="custom-control-input" value="1" checked="" >
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">True</span>
           </label>
@@ -176,9 +175,8 @@
             <span class="custom-control-description">False</span>
           </label>
 
-
+          </div>
         </div>
-           </div>
 
           <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
           <br><br><br>
