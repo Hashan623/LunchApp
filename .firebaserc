@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "lunchapp-86c49"
+    "default": "lunchapp-86c49",
+    "lunchapp": "lunchapp-86c49"
   }
 }

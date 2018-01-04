@@ -6,4 +6,7 @@ export class Address {
   subroad: string;
   mainroad: string;
   city: string;
+
+  latitude: string;
+  longtitude: string;
 }
