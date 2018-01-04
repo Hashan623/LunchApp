@@ -100,7 +100,11 @@ import { MenuComponent } from './admin/menu/menu.component';
       {
         path: 'admin/riders/:id', component: RiderFormComponent,
         canActivate: [AuthGuard]
-      }
+      },
+      {
+        path: 'admin/menu', component: MenuComponent,
+        canActivate: [AuthGuard]
+      },
     ])
   ],
   providers: [
