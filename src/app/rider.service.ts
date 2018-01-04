@@ -1,16 +1,36 @@
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Rider } from './models/rider';
+
+import {Address} from './models/address';
 
 @Injectable()
 export class RiderService {
 
+
+  private addressPath: string = '/address';
+
+
+    address: FirebaseObjectObservable<Address> = null;
+    addresses: FirebaseListObservable<Address[]> = null;
+
+
   constructor(private db: AngularFireDatabase) { }
 
-    create(rider) {
+
+  getAddress(key: string): FirebaseObjectObservable<Address> {
+    this.address = this.db.object(`${this.addressPath}/${key}`);
+    return this.address;
+  }
+
+
+    create(rider, address: Address) {
       rider.googleid ='null';
       rider.active ='false';
-      return this.db.list('/riders').push(rider);
+       this.db.list('/riders').push(rider);
+
+      const addresses = this.db.list('/address');
+      addresses.push(address);
     }
 
     update(riderId, rider) {
@@ -25,15 +45,15 @@ export class RiderService {
       return this.db.object('/riders/' + riderId)
     }
 
-     updateRider(active: string, rider: Rider): void {
-      this.db.object('riders/'+active).update(rider);
-     }
-    private handleError(error) {
-    console.log(error);
-    }
+    //  updateRider(active: string, rider: Rider): void {
+    //   this.db.object('riders/'+active).update(rider);
+    //  }
+    // private handleError(error) {
+    // console.log(error);
+    // }
 
-    updateActive(riderId: any, active: string): void {
-      this.db.object('/riders/' + riderId)
-        .update({ content: active, active: riderId.active });
-    }
+    // updateActive(riderId: any, active: string): void {
+    //   this.db.object('/riders/' + riderId)
+    //     .update({ content: active, active: riderId.active });
+    // }
   }

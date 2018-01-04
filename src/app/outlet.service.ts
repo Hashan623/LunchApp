@@ -36,7 +36,7 @@ export class OutletService {
   getAll() {
     return this.db.list('/outlets');
   }
-  
+
   get(outletId) {
     return this.db.object('/outlets/' + outletId)
   }
