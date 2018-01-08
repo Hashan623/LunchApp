@@ -1,0 +1,59 @@
+
+<p>
+  <a routerLink="/admin/menu/new" class="btn btn-primary">Add Menu</a>
+</p>
+<p>
+  <input
+  #query
+  (keyup)="filter(query.value)"
+  type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+>
+
+<data-table-column
+  [property]="'rice'"
+  [header]="'Rice'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'curry1'"
+  [header]="'Curry 1'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'curry2'"
+  [header]="'Curry 2'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'curry3'"
+  [header]="'Curry 3'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+
+<data-table-column
+  [property]="'$key'"
+>
+<ng-template #dataTableCell let-item="item">
+<a [routerLink]="['/admin/menu/', item.$key]">Edit</a>
+</ng-template>
+</data-table-column>
+
+</data-table>
