@@ -1,4 +1,4 @@
-import { MenuService } from './menu.service';
+
 import { RiderService } from './rider.service';
 
 import { OutletService } from './outlet.service';
@@ -32,8 +32,7 @@ import { AdminRidersComponent } from './admin/admin-riders/admin-riders.componen
 import { RiderFormComponent } from './admin/rider-form/rider-form.component';
 
 //import { AgmCoreModule } from '@agm/core';
-import { MenuFormComponent } from './admin/menu-form/menu-form.component';
-import { MenuViewComponent } from './admin/menu-view/menu-view.component';
+
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
@@ -57,8 +56,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
 
     AdminRidersComponent,
     RiderFormComponent,
-    MenuFormComponent,
-    MenuViewComponent
+
 
   ],
   imports: [
@@ -110,19 +108,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
       {
         path: 'admin/riders/:id', component: RiderFormComponent,
         canActivate: [AuthGuard]
-      },
-      {
-        path: 'admin/menu', component: MenuViewComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'admin/menu/new', component: MenuFormComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'admin/menu/:id', component: MenuFormComponent,
-        canActivate: [AuthGuard]
-      },
+      }
     ])
   ],
   providers: [
@@ -130,8 +116,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AuthGuard,
     UserService,
     OutletService,
-    RiderService,
-    MenuService
+    RiderService
   ],
   bootstrap: [AppComponent]
 })
