@@ -1,0 +1,49 @@
+<p>
+  <a routerLink="/admin/food/foodtypes/new" class="btn btn-primary">Add Food Type</a>
+</p>
+<p>
+  <input
+  #query
+  (keyup)="filter(query.value)"
+  type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+>
+
+<data-table-column
+  [property]="'name'"
+  [header]="'Name'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'isMainMenu'"
+  [header]="'isMainMenu'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'isSpecial'"
+  [header]="'isSpecial'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'$key'"
+>
+<ng-template #dataTableCell let-item="item">
+<a [routerLink]="['/admin/food/foodtypes', item.$key]">Edit</a>
+</ng-template>
+</data-table-column>
+
+</data-table>

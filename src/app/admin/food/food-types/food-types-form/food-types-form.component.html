@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-8">
+    <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
+          <div class="col-xs-10">
+            <input #name="ngModel" [(ngModel)]="food.name" name="name" id="name" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+              Food Name is required!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-auto form-group col-md-6">
+          <label for="isMainMenu">isMainMenu</label>
+          <br>
+          <label class="custom-control custom-radio active">
+            <input id="active1" name="active" #active="ngModel" [(ngModel)]="food.active" type="radio" class="custom-control-input" value="1"
+              checked="">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">True</span>
+          </label>
+          <label class="custom-control custom-radio">
+            <input id="active2" name="active" #active="ngModel" [(ngModel)]="food.active" type="radio" class="custom-control-input" value="0">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">False</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input #imageUrl="ngModel" [(ngModel)]="food.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required
+          url>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+          <div *ngIf="imageUrl.errors.required">Image URL is required!</div>
+          <div *ngIf="imageUrl.errors.url">URL is invalid!</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-auto form-group col-md-6">
+          <label for="isSpecial">isSpecial</label>
+          <br>
+          <label class="custom-control custom-radio active">
+            <input id="active1" name="active" #active="ngModel" [(ngModel)]="food.active" type="radio" class="custom-control-input" value="1"
+              checked="">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">True</span>
+          </label>
+          <label class="custom-control custom-radio">
+            <input id="active2" name="active" #active="ngModel" [(ngModel)]="food.active" type="radio" class="custom-control-input" value="0">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">False</span>
+          </label>
+        </div>
+      </div>
+
+      <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
+
+      <div class="col-md-4">
+        <div *ngIf="food.name" class="card" style="width: 20rem;">
+          <img class="card-img-top" [src]="food.imageUrl" *ngIf="food.imageUrl">
+          <div class="card-body">
+            <h4 class="card-title">{{ food.name }}</h4>
+            <p class="card-text">{{ food.city }}</p>
+          </div>
+        </div>
+      </div>

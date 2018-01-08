@@ -3,10 +3,8 @@ import { OutletService } from '../../outlet.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take';
 
-import {Address} from '../../models/address';
-import {
-  AgmCoreModule
-} from 'angular2-google-maps/core';
+import { Address } from '../../models/address';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MouseEvent } from '@agm/core';
 
