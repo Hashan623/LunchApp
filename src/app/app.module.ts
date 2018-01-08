@@ -1,4 +1,3 @@
-import { MenuService } from './menu.service';
 import { RiderService } from './rider.service';
 
 import { OutletService } from './outlet.service';
@@ -32,8 +31,7 @@ import { AdminRidersComponent } from './admin/admin-riders/admin-riders.componen
 import { RiderFormComponent } from './admin/rider-form/rider-form.component';
 
 import { AgmCoreModule } from '@agm/core';
-import { MenuFormComponent } from './admin/menu-form/menu-form.component';
-import { MenuViewComponent } from './admin/menu-view/menu-view.component';
+import { MenuComponent } from './admin/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +48,7 @@ import { MenuViewComponent } from './admin/menu-view/menu-view.component';
 
     AdminRidersComponent,
     RiderFormComponent,
-    MenuFormComponent,
-    MenuViewComponent
+    MenuComponent
 
   ],
   imports: [
@@ -104,15 +101,7 @@ import { MenuViewComponent } from './admin/menu-view/menu-view.component';
         canActivate: [AuthGuard]
       },
       {
-        path: 'admin/menu', component: MenuViewComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'admin/menu/new', component: MenuFormComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'admin/menu/:id', component: MenuFormComponent,
+        path: 'admin/menu', component: MenuComponent,
         canActivate: [AuthGuard]
       },
     ])
@@ -122,8 +111,7 @@ import { MenuViewComponent } from './admin/menu-view/menu-view.component';
     AuthGuard,
     UserService,
     OutletService,
-    RiderService,
-    MenuService
+    RiderService
   ],
   bootstrap: [AppComponent]
 })

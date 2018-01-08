@@ -39,4 +39,10 @@ address: Address = new Address();
   ngOnInit() {
   }
 
+  title: string = 'Google Maps Addeed Successfully';
+
+     lat: number = 6.927079 ;
+
+     lng: number = 79.861244;
+
 }
