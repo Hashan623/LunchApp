@@ -31,9 +31,16 @@ import { OutletFormComponent } from './admin/outlet-form/outlet-form.component';
 import { AdminRidersComponent } from './admin/admin-riders/admin-riders.component';
 import { RiderFormComponent } from './admin/rider-form/rider-form.component';
 
-import { AgmCoreModule } from '@agm/core';
+//import { AgmCoreModule } from '@agm/core';
 import { MenuFormComponent } from './admin/menu-form/menu-form.component';
 import { MenuViewComponent } from './admin/menu-view/menu-view.component';
+
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
+
+const googleMapsCore = AgmCoreModule.forRoot({
+  apiKey : 'AIzaSyBqPVJZVjdiDEDcooC4sjLb46j9oIO6BUs',
+});
 
 @NgModule({
   declarations: [
@@ -57,11 +64,12 @@ import { MenuViewComponent } from './admin/menu-view/menu-view.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AgmCoreModule.forRoot({
+    // AgmCoreModule.forRoot({
 
-           apiKey: 'AIzaSyBqPVJZVjdiDEDcooC4sjLb46j9oIO6BUs'
+    //        apiKey: 'AIzaSyBqPVJZVjdiDEDcooC4sjLb46j9oIO6BUs'
 
-         }),
+    //      }),
+    googleMapsCore,
     CustomFormsModule,
     DataTableModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,5 +1,9 @@
-agm-map {
+/* agm-map {
 
       height: 500px;
 
-   }
+   } */
+   .sebm-google-map-container {
+    height: 300px;
+    width: 300px;
+  }
