@@ -30,8 +30,8 @@ import { OutletFormComponent } from './admin/outlet-form/outlet-form.component';
 import { AdminRidersComponent } from './admin/admin-riders/admin-riders.component';
 import { RiderFormComponent } from './admin/rider-form/rider-form.component';
 
+
 import { AgmCoreModule } from '@agm/core';
-import { MenuComponent } from './admin/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import { MenuComponent } from './admin/menu/menu.component';
 
     AdminRidersComponent,
     RiderFormComponent,
-    MenuComponent
 
   ],
   imports: [
@@ -99,11 +98,7 @@ import { MenuComponent } from './admin/menu/menu.component';
       {
         path: 'admin/riders/:id', component: RiderFormComponent,
         canActivate: [AuthGuard]
-      },
-      {
-        path: 'admin/menu', component: MenuComponent,
-        canActivate: [AuthGuard]
-      },
+      }
     ])
   ],
   providers: [
