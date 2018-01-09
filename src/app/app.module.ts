@@ -1,10 +1,11 @@
-
+import { FoodtypeService } from './foodtype.service';
 import { RiderService } from './rider.service';
-
 import { OutletService } from './outlet.service';
 import { UserService } from './user.service';
+
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -133,7 +134,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AuthGuard,
     UserService,
     OutletService,
-    RiderService
+    RiderService,
+    FoodtypeService
   ],
   bootstrap: [AppComponent]
 })
