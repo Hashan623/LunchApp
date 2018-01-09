@@ -19,12 +19,12 @@
           <label for="isMainMenu">isMainMenu</label>
           <br>
           <label class="custom-control custom-radio active">
-            <input id="isMainMenu1" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input" [value]="true">
+            <input id="isMainMenu1" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input" [value]="true" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">True</span>
           </label>
           <label class="custom-control custom-radio">
-            <input id="isMainMenu0" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input" [value]="false">
+            <input id="isMainMenu0" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input" [value]="false" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">False</span>
           </label>
@@ -42,19 +42,19 @@
         </div>
         </div>
       </div>
-      
+
 
       <div class="form-row">
         <div class="col-auto form-group col-md-6">
           <label for="isSpecial">isSpecial</label>
           <br>
           <label class="custom-control custom-radio active">
-            <input id="isSpecial1" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input" [value]="true">
+            <input id="isSpecial1" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input" [value]="true" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">True</span>
           </label>
           <label class="custom-control custom-radio">
-            <input id="isSpecial0" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input" [value]="false">
+            <input id="isSpecial0" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input" [value]="false" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">False</span>
           </label>
@@ -63,7 +63,7 @@
 
       <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
 
-      
+
     </form>
 
   </div>

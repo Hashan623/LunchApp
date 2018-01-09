@@ -165,12 +165,12 @@
             <label for="active">Active</label>
             <br>
           <label class="custom-control custom-radio active">
-            <input id="active1" name="active" #active="ngModel" [(ngModel)]="outlet.active" type="radio" class="custom-control-input" value="1" checked="" >
+            <input id="active1" name="active" #active="ngModel" [(ngModel)]="outlet.active" type="radio" class="custom-control-input" value="1" checked="" required >
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">True</span>
           </label>
           <label class="custom-control custom-radio">
-            <input id="active2" name="active" #active="ngModel" [(ngModel)]="outlet.active" type="radio" class="custom-control-input" value="0" >
+            <input id="active2" name="active" #active="ngModel" [(ngModel)]="outlet.active" type="radio" class="custom-control-input" value="0" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">False</span>
           </label>
@@ -199,20 +199,30 @@
 
              </agm-map> -->
              <sebm-google-map
-             [latitude]="lat"
-             [longitude]="lng"
-             [zoom]="zoom"
-             (mapClick)="mapClicked(m, $event)">
-          <sebm-google-map-marker
-          *ngFor="let m of markers; let i = index"
-          (markerClick)="clickedMarker(m.label, i)"
-          [latitude]="m.lat"
-          [longitude]="m.lng"
-          [label]="m.label"
-          [markerDraggable]="m.draggable"
-          (dragEnd)="markerDragEnd(m, $event)">
-           </sebm-google-map-marker>
-        </sebm-google-map>
+               [latitude]="lat"
+               [longitude]="lng"
+               [zoom]="zoom"
+               (mapClick)="mapClicked(m, $event)">
+                  <sebm-google-map-marker
+                      *ngFor="let m of markers; let i = index"
+                      (markerClick)="clickedMarker(m.label, i)"
+                      [latitude]="m.lat"
+                      [longitude]="m.lng"
+                      [label]="m.label"
+                      [markerDraggable]="m.draggable"
+                      (dragEnd)="markerDragEnd(m, $event)">
+
+
+                       <sebm-google-map-info-window>
+                            <strong>latitude = {{m.lat}} , longitude = {{m.lng}}</strong>
+                      </sebm-google-map-info-window>
+
+                  </sebm-google-map-marker>
+              </sebm-google-map>
+
+
+
+
 
   </div>
 </div>
