@@ -1,0 +1,73 @@
+<p>
+  <a routerLink="/admin/food/fooddetail/new" class="btn btn-primary">Add Food Detail</a>
+</p>
+<p>
+  <input
+  #query
+  (keyup)="filter(query.value)"
+  type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+>
+
+<data-table-column
+  [property]="'name'"
+  [header]="'Name'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'outlet'"
+  [header]="'Outlet'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'foodType'"
+  [header]="'Food Type'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'normalPrice'"
+  [header]="'Normal Price'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'extraPrice'"
+  [header]="'Extra Price'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'isActive'"
+  [header]="'isActive'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
+  [property]="'$key'"
+>
+<ng-template #dataTableCell let-item="item">
+<a [routerLink]="['/admin/food/fooddetail', item.$key]">Edit</a>
+</ng-template>
+</data-table-column>
+
+</data-table>

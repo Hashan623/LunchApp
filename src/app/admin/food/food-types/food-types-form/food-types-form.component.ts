@@ -10,7 +10,6 @@ import { BrowserModule } from '@angular/platform-browser';
   styleUrls: ['./food-types-form.component.css']
 })
 export class FoodTypesFormComponent implements OnInit {
-  show = false;
   foodtype = {};
   id;
 //  address={};

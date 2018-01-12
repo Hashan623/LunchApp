@@ -8,6 +8,23 @@ export class FoodtypeService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  // getFoodtypesList() { 
+  //   return this.db.list('/foodtypes', {
+  //     query: {
+  //       orderByChild: 'name'
+  //     }
+  //   });
+  // }
+
+  getFoodtypesList() { 
+    return this.db.list('/foodtypes', {
+      query: {
+        orderByChild: 'isMainMenu',
+        equalTo: false
+      }
+    });
+  }
+
   create(foodtype) {
    this.db.list('/foodtypes').push(foodtype);
   // this.db.list('/address').push(address);

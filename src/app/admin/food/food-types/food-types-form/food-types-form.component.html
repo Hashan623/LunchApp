@@ -16,15 +16,17 @@
 
       <div class="form-row">
         <div class="col-auto form-group col-md-6">
-          <label for="isMainMenu">isMainMenu</label>
+          <label for="isMainMenu">Is this a Main Menu item?</label>
           <br>
           <label class="custom-control custom-radio active">
-            <input id="isMainMenu1" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input" [value]="true" required>
+            <input id="isMainMenu1" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input"
+              [value]="true" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">True</span>
           </label>
           <label class="custom-control custom-radio">
-            <input id="isMainMenu0" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input" [value]="false" required>
+            <input id="isMainMenu0" name="isMainMenu" #active="ngModel" [(ngModel)]="foodtype.isMainMenu" type="radio" class="custom-control-input"
+              [value]="false" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">False</span>
           </label>
@@ -33,28 +35,30 @@
 
       <div class="form-row">
         <div class="form-group col-md-12" *ngIf="foodtype.isMainMenu">
-        <label for="imageUrl">Image URL</label>
-        <input #imageUrl="ngModel" [(ngModel)]="foodtype.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required
-          url>
-        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-          <div *ngIf="imageUrl.errors.required">Image URL is required!</div>
-          <div *ngIf="imageUrl.errors.url">URL is invalid!</div>
-        </div>
+          <label for="imageUrl">Image URL</label>
+          <input #imageUrl="ngModel" [(ngModel)]="foodtype.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control"
+            required url>
+          <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+            <div *ngIf="imageUrl.errors.required">Image URL is required!</div>
+            <div *ngIf="imageUrl.errors.url">URL is invalid!</div>
+          </div>
         </div>
       </div>
 
 
       <div class="form-row">
         <div class="col-auto form-group col-md-6">
-          <label for="isSpecial">isSpecial</label>
+          <label for="isSpecial">Is this a special item?</label>
           <br>
           <label class="custom-control custom-radio active">
-            <input id="isSpecial1" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input" [value]="true" required>
+            <input id="isSpecial1" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input"
+              [value]="true" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">True</span>
           </label>
           <label class="custom-control custom-radio">
-            <input id="isSpecial0" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input" [value]="false" required>
+            <input id="isSpecial0" name="isSpecial" #active="ngModel" [(ngModel)]="foodtype.isSpecial" type="radio" class="custom-control-input"
+              [value]="false" required>
             <span class="custom-control-indicator"></span>
             <span class="custom-control-description">False</span>
           </label>
@@ -68,12 +72,11 @@
 
   </div>
   <div class="col-md-4">
-      <div *ngIf="foodtype.name" class="card" style="width: 20rem;">
-        <img class="card-img-top" [src]="foodtype.imageUrl" *ngIf="foodtype.imageUrl">
-        <div class="card-body">
-          <h4 class="card-title">{{ foodtype.name }}</h4>
-        </div>
+    <div *ngIf="foodtype.name" class="card" style="width: 20rem;">
+      <img class="card-img-top" [src]="foodtype.imageUrl" *ngIf="foodtype.imageUrl">
+      <div class="card-body">
+        <h4 class="card-title">{{ foodtype.name }}</h4>
       </div>
     </div>
+  </div>
 </div>
-

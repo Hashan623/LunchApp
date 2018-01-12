@@ -1,3 +1,4 @@
+import { FooddetailService } from './fooddetail.service';
 import { FoodtypeService } from './foodtype.service';
 import { RiderService } from './rider.service';
 import { OutletService } from './outlet.service';
@@ -38,6 +39,8 @@ import { RiderFormComponent } from './admin/rider-form/rider-form.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { FoodTypesFormComponent } from './admin/food/food-types/food-types-form/food-types-form.component';
 import { FoodTypesViewComponent } from './admin/food/food-types/food-types-view/food-types-view.component';
+import { FoodDetailViewComponent } from './admin/food/food-detail/food-detail-view/food-detail-view.component';
+import { FoodDetailFormComponent } from './admin/food/food-detail/food-detail-form/food-detail-form.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -61,6 +64,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     RiderFormComponent,
     FoodTypesFormComponent,
     FoodTypesViewComponent,
+    FoodDetailViewComponent,
+    FoodDetailFormComponent,
 
 
 
@@ -126,6 +131,18 @@ const googleMapsCore = AgmCoreModule.forRoot({
       {
         path: 'admin/food/foodtypes/:id', component: FoodTypesFormComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/food/fooddetail', component: FoodDetailViewComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/food/fooddetail/new', component: FoodDetailFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/food/fooddetail/:id', component: FoodDetailFormComponent,
+        canActivate: [AuthGuard]
       }
     ])
   ],
@@ -135,7 +152,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     UserService,
     OutletService,
     RiderService,
-    FoodtypeService
+    FoodtypeService,
+    FooddetailService
   ],
   bootstrap: [AppComponent]
 })
