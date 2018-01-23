@@ -110,21 +110,60 @@
           </div>
         </div>
 
+<br>
+<hr>
 
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="latitude">Latitude</label>
-            <input #latitude="ngModel" [(ngModel)]="outlet.latitude"  [(ngModel)]="address.latitude" name="latitude" id="latitude" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="latitude.touched && latitude.invalid">
-              <div *ngIf="latitude.errors.required">Latitude is required!</div>
+
+            <div class="form-group col-md-12">
+            <label for="imageUrl"><h4>Please Select the Place (Latitude & Longtitude) on the Map</h4></label>
             </div>
+        <sebm-google-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [zoom]="zoom"
+        (mapClick)="mapClicked(m, $event)">
+           <sebm-google-map-marker
+               *ngFor="let m of markers; let i = index"
+               (markerClick)="clickedMarker(m.label, i)"
+               [latitude]="m.lat"
+               [longitude]="m.lng"
+               [label]="m.label"
+               [markerDraggable]="m.draggable"
+               (dragEnd)="markerDragEnd(m, $event)">
+
+
+                <sebm-google-map-info-window>
+                     <strong>latitude = {{m.lat}} , longitude = {{m.lng}}</strong>
+               </sebm-google-map-info-window>
+
+           </sebm-google-map-marker>
+       </sebm-google-map>
+      </div>
+
+<br>
+
+        <div class="form-row" required>
+          <div class="form-group col-md-6" >
+            <label for="latitude">Latitude</label>
+            <input #latitude="ngModel"  *ngFor="let m of markers; let i = index"
+            [(ngModel)]="m.lat" [(ngModel)]="outlet.latitude"  [(ngModel)]="address.latitude" name="latitude" id="latitude" type="number" class="form-control" required>
+
+
+
+            <!-- <div class="alert alert-danger" *ngIf="latitude.touched && latitude.invalid">
+              <div *ngIf="latitude.errors.required">Latitude is required!</div>
+            </div> -->
           </div>
           <div class="form-group col-md-6">
             <label for="longtitude">Longtitude</label>
-            <input #longtitude="ngModel" [(ngModel)]="outlet.longtitude" [(ngModel)]="address.longtitude" name="longtitude" id="longtitudev" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="longtitude.touched && longtitude.invalid">
+            <input #longtitude="ngModel"  *ngFor="let m of markers; let i = index"
+             [(ngModel)]="m.lng" [(ngModel)]="outlet.longtitude" [(ngModel)]="address.longtitude" name="longtitude" id="longtitudev" type="number" class="form-control" required>
+
+
+             <!-- <div class="alert alert-danger" *ngIf="longtitude.touched && longtitude.invalid">
               <div *ngIf="longtitude.errors.required">Longtitude is required!</div>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -198,30 +237,6 @@
                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 
              </agm-map> -->
-             <sebm-google-map
-               [latitude]="lat"
-               [longitude]="lng"
-               [zoom]="zoom"
-               (mapClick)="mapClicked(m, $event)">
-                  <sebm-google-map-marker
-                      *ngFor="let m of markers; let i = index"
-                      (markerClick)="clickedMarker(m.label, i)"
-                      [latitude]="m.lat"
-                      [longitude]="m.lng"
-                      [label]="m.label"
-                      [markerDraggable]="m.draggable"
-                      (dragEnd)="markerDragEnd(m, $event)">
-
-
-                       <sebm-google-map-info-window>
-                            <strong>latitude = {{m.lat}} , longitude = {{m.lng}}</strong>
-                      </sebm-google-map-info-window>
-
-                  </sebm-google-map-marker>
-              </sebm-google-map>
-
-
-
 
 
   </div>

@@ -39,6 +39,18 @@
         </div>
       </li>
 
+      <!-- <li ngbDropdown *ngIf="auth.user$ | async as user" class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown03">
+          <a class="nav-link" routerLink="/admin/order/orders/new">Order Form</a>
+          <a class="nav-link" routerLink="/admin/order/orders">View Orders</a>
+        </div>
+      </li> -->
+      <!-- <ng-template *ngIf="auth.user$ | async as user"> -->
+          <li *ngIf="auth.user$ | async as user" class="nav-item">
+            <a class="nav-link" routerLink="/admin/order/orders">Order</a>
+          </li>
+      <!-- </ng-template> -->
     </ul>
   </div>
 </nav>

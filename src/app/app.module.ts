@@ -4,6 +4,7 @@ import { FoodtypeService } from './foodtype.service';
 import { RiderService } from './rider.service';
 import { OutletService } from './outlet.service';
 import { UserService } from './user.service';
+import { OrderService } from './order.service';
 
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -43,6 +44,8 @@ import { FoodTypesViewComponent } from './admin/food/food-types/food-types-view/
 import { FoodDetailViewComponent } from './admin/food/food-detail/food-detail-view/food-detail-view.component';
 import { FoodDetailFormComponent } from './admin/food/food-detail/food-detail-form/food-detail-form.component';
 import { OutletAuthGuard } from './outlet-auth-guard.service';
+import { OrdersFormComponent } from './admin/Order/orders-form/orders-form.component';
+import { OrdersViewComponent } from './admin/Order/orders-view/orders-view.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -68,6 +71,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodTypesViewComponent,
     FoodDetailViewComponent,
     FoodDetailFormComponent,
+    OrdersFormComponent,
+    OrdersViewComponent,
 
 
 
@@ -144,8 +149,20 @@ const googleMapsCore = AgmCoreModule.forRoot({
       },
       {
         path: 'admin/food/fooddetail/:id', component: FoodDetailFormComponent,
-        canActivate: [AuthGuard, AdminAuthGuard]
-      }
+        canActivate: [AuthGuard]
+      },
+      {
+       path: 'admin/order/orders', component: OrdersViewComponent,
+        canActivate: [AuthGuard]
+       },
+      {
+        path: 'admin/order/orders/new', component: OrdersFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/order/orders/:id', component: OrdersFormComponent,
+        canActivate: [AuthGuard]
+      },
     ])
   ],
   providers: [
@@ -157,7 +174,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     OutletService,
     RiderService,
     FoodtypeService,
-    FooddetailService
+    FooddetailService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

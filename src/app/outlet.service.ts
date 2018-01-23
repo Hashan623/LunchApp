@@ -15,13 +15,22 @@ export class OutletService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  getOutletList() { 
+  getOutletList() {
     return this.db.list('/outlets', {
       query: {
         orderByChild: 'name'
       }
     });
   }
+//////////////////////////////////////////
+  getOutletkeyListnew() {
+    return this.db.list('/outlets', {
+      query: {
+        orderByChild: 'key'
+      }
+    });
+  }
+
 
   getAddress(key: string): FirebaseObjectObservable<Address> {
     this.address = this.db.object(`${this.addressPath}/${key}`);
