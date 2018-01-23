@@ -2,7 +2,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { Injectable } from '@angular/core';
 import { Rider } from './models/rider';
 
-import {Address} from './models/address';
+import { Address } from './models/address';
 
 @Injectable()
 export class RiderService {
@@ -11,8 +11,8 @@ export class RiderService {
   private addressPath: string = '/address';
 
 
-    address: FirebaseObjectObservable<Address> = null;
-    addresses: FirebaseListObservable<Address[]> = null;
+  address: FirebaseObjectObservable<Address> = null;
+  addresses: FirebaseListObservable<Address[]> = null;
 
 
   constructor(private db: AngularFireDatabase) { }
@@ -24,36 +24,36 @@ export class RiderService {
   }
 
 
-    create(rider, address: Address) {
-      rider.googleid ='null';
-      rider.active ='false';
-       this.db.list('/riders').push(rider);
+  create(rider, address: Address) {
+    rider.googleid = 'null';
+    rider.active = 'false';
+    this.db.list('/riders').push(rider);
 
-      const addresses = this.db.list('/address');
-      addresses.push(address);
-    }
-
-    update(riderId, rider) {
-      return this.db.object('/riders/' + riderId).update(rider);
-    }
-
-    getAll() {
-      return this.db.list('/riders');
-    }
-
-    get(riderId) {
-      return this.db.object('/riders/' + riderId)
-    }
-
-    //  updateRider(active: string, rider: Rider): void {
-    //   this.db.object('riders/'+active).update(rider);
-    //  }
-    // private handleError(error) {
-    // console.log(error);
-    // }
-
-    // updateActive(riderId: any, active: string): void {
-    //   this.db.object('/riders/' + riderId)
-    //     .update({ content: active, active: riderId.active });
-    // }
+    const addresses = this.db.list('/address');
+    addresses.push(address);
   }
+
+  update(riderId, rider) {
+    return this.db.object('/riders/' + riderId).update(rider);
+  }
+
+  getAll() {
+    return this.db.list('/riders');
+  }
+
+  get(riderId) {
+    return this.db.object('/riders/' + riderId)
+  }
+
+  //  updateRider(active: string, rider: Rider): void {
+  //   this.db.object('riders/'+active).update(rider);
+  //  }
+  // private handleError(error) {
+  // console.log(error);
+  // }
+
+  // updateActive(riderId: any, active: string): void {
+  //   this.db.object('/riders/' + riderId)
+  //     .update({ content: active, active: riderId.active });
+  // }
+}
