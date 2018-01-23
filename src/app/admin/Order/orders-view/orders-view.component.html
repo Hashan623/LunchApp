@@ -1,0 +1,103 @@
+
+<div style="margin: auto; max-width: 1500px; margin-bottom: 50px;">
+
+
+
+
+
+    <p>
+      <a routerLink="/admin/order/orders/new" class="btn btn-primary">Add Orders</a>
+    </p>
+    <p>
+      <input
+      #query
+      (keyup)="filter(query.value)"
+      type="text" class="form-control" placeholder="Search...">
+    </p>
+
+    <data-table  id="persons-grid"
+ headerTitle="Orders"
+      [items]="items"
+      [itemCount]="itemCount"
+      (reload)="reloadItems($event)"
+
+
+      [rowTooltip]="rowTooltip"
+    >
+
+    <data-table-column
+      [property]="'time'"
+      [header]="'Time'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'date'"
+      [header]="'Date'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'outletname'"
+      [header]="'Outlet Name'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'status'"
+      [header]="'Status'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'orderdiscription'"
+      [header]="'Order Discription'"
+      [width]="200"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+    [property]="'deliveryaddress'"
+    [header]="'Delivery Address'"
+    [width]="200"
+    [sortable]="true"
+    [resizable]="true"
+    >
+    </data-table-column>
+
+
+
+    <data-table-column
+      [property]="'price'"
+      [header]="'Price'"
+      [sortable]="true"
+      [resizable]="true">
+    </data-table-column>
+
+
+    <data-table-column
+      [property]="'$key'"
+    >
+    <ng-template #dataTableCell let-item="item">
+    <a [routerLink]="['/admin/order/orders/', item.$key]">Edit</a>
+    </ng-template>
+    </data-table-column>
+
+
+    </data-table>
+
+
+    </div>
+
+
+

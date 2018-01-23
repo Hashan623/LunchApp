@@ -1,0 +1,123 @@
+
+
+
+
+<div class="row">
+  <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+
+          <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="time">Time</label>
+            <input #time="ngModel" [(ngModel)]="order.time" name="time" id="time" type="time" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="time.touched && time.invalid">
+              Time is required!
+            </div>
+
+          </div>
+          <div class="form-group col-md-6">
+            <label for="date">Date</label>
+            <input #date="ngModel" [(ngModel)]="order.date" name="date" id="date" type="date" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="date.touched && date.invalid">
+              <div *ngIf="date.errors.required">Date is required!</div>
+              <div *ngIf="date.errors.date">Date is not valid!</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-row">
+		      <div class="form-group col-md-6">
+            <label for="outletname">Outlet Name</label>
+            <select #outletname="ngModel" [(ngModel)]="order.outletname" name="outletname" id="outletname" type="text" class="form-control" required>
+                <!-- <option value="">Select...</option> -->
+                <option *ngFor="let o of outlets$ | async" [value]="o.name">
+                  {{ o.name }}
+                </option>
+              </select>
+
+              <div class="alert alert-danger" *ngIf="outletname.touched && outletname.invalid">
+                Outlet Name is required!
+              </div>
+          </div>
+
+
+            <div class="col-auto form-group col-md-6">
+            <label for="status">Status</label>
+            <select class="custom-select" #status="ngModel" [(ngModel)]="order.status" name="status" id="status" type="text" class="form-control" required>
+              <option value="Pending">Pending</option>
+              <option value="On the Way">On the Way</option>
+              <option value="Canceled">Canceled</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="status.touched && status.invalid">
+              <div *ngIf="status.errors.required">Status is required!</div>
+            </div>
+          </div>
+
+
+
+<!--
+		      <div class="form-group col-md-6">
+            <label for="status">Status</label>
+            <input #status="ngModel" [(ngModel)]="order.status" [(ngModel)]="order.action" name="status" id="status" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="status.touched && status.invalid">
+                Status is required!
+              </div>
+          </div> -->
+         </div>
+
+         <!-- <div class="form-row">
+
+                 <div class="col-auto form-group col-md-6">
+                      <label for="action">Action</label>
+                       <br>
+                      <label class="custom-control custom-radio">
+                           <input id="action1" name="action" #action="ngModel" [(ngModel)]="order.action" type="radio" class="custom-control-input" value="Approved" required>
+                                 <span class="custom-control-indicator"></span>
+                                 <span class="custom-control-description">Approved</span>
+                       </label>
+                       <label class="custom-control custom-radio">
+                                  <input id="action2" name="action" #action="ngModel" [(ngModel)]="order.action" type="radio" class="custom-control-input" value="Cancelled" required>
+                           <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Cancelled</span>
+                       </label>
+
+                 </div>
+          </div> -->
+
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="orderdiscription">Order Discription</label>
+            <input #orderdiscription="ngModel" [(ngModel)]="order.orderdiscription" name="orderdiscription" id="orderdiscription" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="orderdiscription.touched && orderdiscription.invalid">
+              Order Discription is required!
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="price">Price</label>
+            <input #price="ngModel" [(ngModel)]="order.price" name="price" id="price" type="currency" class="form-control" min="0" required>
+              <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                Price is required!
+              </div>
+          </div>
+
+        </div>
+
+        <div class="form-row">
+		      <div class="form-group col-md-12">
+            <label for="deliveryaddress">Delivery Address</label>
+            <input #deliveryaddress="ngModel" [(ngModel)]="order.deliveryaddress" name="deliveryaddress" id="deliveryaddress" type="text" class="form-control" required>
+              <div class="alert alert-danger" *ngIf="deliveryaddress.touched && deliveryaddress.invalid">
+                Delivery Address is required!
+              </div>
+          </div>
+        </div>
+
+        <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
+        </form>
+  </div>
+
+</div>

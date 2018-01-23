@@ -18,6 +18,8 @@ export class FoodDetailFormComponent implements OnInit {
   outlets$;
   foodtypes$;
 
+  outletkey$;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -27,7 +29,9 @@ export class FoodDetailFormComponent implements OnInit {
     foodTypeService: FoodtypeService) {
     this.outlets$ = outletService.getOutletList();
     this.foodtypes$ = foodTypeService.getFoodtypesList();
-    
+
+    this.outletkey$ = outletService.getOutletkeyListnew();
+
     this.id = this.route.snapshot.paramMap.get('id');
     this.ngOnInit
     if (this.id) this.fooddetailService.get(this.id).take(1).subscribe(o => this.fooddetail = o);

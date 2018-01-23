@@ -1,13 +1,14 @@
 
 export class Outlet {
+    $key: string;
     name: string;
     outletphone: number;
     ownername: string;
     ownerphone: number;
     username: string;
     password: string;
-    latitude: string;
-    longtitude: string;
+    latitude: number;
+    longtitude: number;
     active:boolean = true;
     imageUrl: string;
 
