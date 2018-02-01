@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class FooddetailService {
+  
+  ID: string = UUID.UUID();
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -15,9 +18,13 @@ export class FooddetailService {
   //   });
   // }
 
+  // create(fooddetail) {
+  //  this.db.list('/fooddetails').push(fooddetail);
+  // // this.db.list('/address').push(address);
+  // }
+
   create(fooddetail) {
-   this.db.list('/fooddetails').push(fooddetail);
-  // this.db.list('/address').push(address);
+    this.db.database.ref('/fooddetails').child(this.ID).set(fooddetail)
   }
 
   update(fooddetailId, fooddetail) {

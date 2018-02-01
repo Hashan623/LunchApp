@@ -20,6 +20,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from "angular-4-data-table";
+//import { UniqueId } from "unique-id-generator";
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -72,10 +73,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodDetailViewComponent,
     FoodDetailFormComponent,
     OrdersFormComponent,
-    OrdersViewComponent,
-
-
-
+    OrdersViewComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +89,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    //UniqueId,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
