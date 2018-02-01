@@ -4,10 +4,10 @@
 
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="name">Name</label>
+          <label for="fname">Name</label>
           <div class="col-xs-10">
-            <input #name="ngModel" [(ngModel)]="fooddetail.name" name="name" id="name" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+            <input #fname="ngModel" [(ngModel)]="fooddetail.fname" [(ngModel)]="fooddetail.keey" name="fname" id="fname" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="fname.touched && fname.invalid">
               Food Name is required!
             </div>
           </div>
@@ -30,9 +30,9 @@
 
       <div class="form-group col-md-6">
         <label for="outlet">Outlet</label>
-         <select #outlet="ngModel" [(ngModel)]="fooddetail.outlet" name="outlet" id="outlet" class="form-control" required>
+         <select #outlet="ngModel" [(ngModel)]="fooddetail.outlet"  name="outlet" id="outlet" class="form-control" required>
           <option value="">Select...</option>
-          <option *ngFor="let o of outlets$ | async" [ngValue]="o" >
+          <option *ngFor="let o of outlets$ | async" [ngValue]="o">
             {{ o.name }}
 
           </option>
@@ -130,10 +130,10 @@
 
   </div>
   <div class="col-md-4">
-    <div *ngIf="fooddetail.name" class="card" style="width: 20rem;">
+    <div *ngIf="fooddetail.fname" class="card" style="width: 20rem;">
       <img class="card-img-top" [src]="fooddetail.imageUrl" *ngIf="fooddetail.imageUrl">
       <div class="card-body">
-        <h4 class="card-title">{{ fooddetail.name }}</h4>
+        <h4 class="card-title">{{ fooddetail.fname }}</h4>
       </div>
     </div>
   </div>
