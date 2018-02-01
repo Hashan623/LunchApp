@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './admin-auth-guard.service';
 import { FooddetailService } from './fooddetail.service';
 import { FoodtypeService } from './foodtype.service';
 import { RiderService } from './rider.service';
@@ -19,6 +20,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from "angular-4-data-table";
+//import { UniqueId } from "unique-id-generator";
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -42,6 +44,7 @@ import { FoodTypesFormComponent } from './admin/food/food-types/food-types-form/
 import { FoodTypesViewComponent } from './admin/food/food-types/food-types-view/food-types-view.component';
 import { FoodDetailViewComponent } from './admin/food/food-detail/food-detail-view/food-detail-view.component';
 import { FoodDetailFormComponent } from './admin/food/food-detail/food-detail-form/food-detail-form.component';
+import { OutletAuthGuard } from './outlet-auth-guard.service';
 import { OrdersFormComponent } from './admin/Order/orders-form/orders-form.component';
 import { OrdersViewComponent } from './admin/Order/orders-view/orders-view.component';
 
@@ -70,10 +73,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodDetailViewComponent,
     FoodDetailFormComponent,
     OrdersFormComponent,
-    OrdersViewComponent,
-
-
-
+    OrdersViewComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +89,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    //UniqueId,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
@@ -103,15 +104,15 @@ const googleMapsCore = AgmCoreModule.forRoot({
       },
       {
         path: 'admin/outlets', component: AdminOutletsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, OutletAuthGuard]
       },
       {
         path: 'admin/outlets/new', component: OutletFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, OutletAuthGuard]
       },
       {
         path: 'admin/outlets/:id', component: OutletFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, OutletAuthGuard]
       },
       {
         path: 'admin/riders', component: AdminRidersComponent,
@@ -127,23 +128,23 @@ const googleMapsCore = AgmCoreModule.forRoot({
       },
       {
         path: 'admin/food/foodtypes', component: FoodTypesViewComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: 'admin/food/foodtypes/new', component: FoodTypesFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: 'admin/food/foodtypes/:id', component: FoodTypesFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: 'admin/food/fooddetail', component: FoodDetailViewComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: 'admin/food/fooddetail/new', component: FoodDetailFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: 'admin/food/fooddetail/:id', component: FoodDetailFormComponent,
@@ -166,6 +167,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
   providers: [
     AuthService,
     AuthGuard,
+    AdminAuthGuard,
+    OutletAuthGuard,
     UserService,
     OutletService,
     RiderService,

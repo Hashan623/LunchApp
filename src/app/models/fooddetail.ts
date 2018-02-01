@@ -5,6 +5,8 @@ export class FoodDetail {
     $key: string;
 
     fname: string;
+    uuid: string;
+    name: string;
     imageUrl: string;
     outlet: Outlet;
     foodtype: string;
