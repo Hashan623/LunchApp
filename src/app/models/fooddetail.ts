@@ -4,7 +4,7 @@ import { Outlet } from './outlet';
 export class FoodDetail {
     $key: string;
 
-    uuid: string;
+    uuid;
     name: string;
     imageUrl: string;
     outlet: Outlet;

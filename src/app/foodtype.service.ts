@@ -1,12 +1,14 @@
 //import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 export class FoodtypeService {
 
   constructor(private db: AngularFireDatabase) { }
+
+  uuid;
 
   // getFoodtypesList() { 
   //   return this.db.list('/foodtypes', {
@@ -16,7 +18,7 @@ export class FoodtypeService {
   //   });
   // }
 
-  getFoodtypesList() { 
+  getFoodtypesList() {
     return this.db.list('/foodtypes', {
       query: {
         orderByChild: 'isMainMenu',
@@ -25,9 +27,11 @@ export class FoodtypeService {
     });
   }
 
-  create(foodtype) {
-   this.db.list('/foodtypes').push(foodtype);
-  // this.db.list('/address').push(address);
+  create(foodtype, uuid) {
+    this.uuid = uuid;
+    foodtype.UUID = uuid;
+    this.db.database.ref('/foodtypes').child(this.uuid).set(foodtype)
+    // this.db.list('/address').push(address);
   }
 
   update(foodtypeId, foodtype) {

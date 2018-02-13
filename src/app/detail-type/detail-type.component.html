@@ -1,0 +1,23 @@
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="foodType">Food Type</label>
+    <select [(ngModel)]="selected" (ngModelChange)="onSelect(selected)" name="foodType" id="foodType" class="form-control" required>
+      <option value="">Select...</option>
+      <option *ngFor="let f of foodtypes$ | async" [value]="f.UUID">
+        {{ f.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="foodDetail">Food Detail</label>
+    <select  name="foodDetail" id="foodDetail" class="form-control" required>
+      <option value="">Select...</option>
+      <option *ngFor="let f of selectedData$ | async" [value]="f.UUID">
+        {{ f.foodType }}
+      </option>
+    </select>
+  </div>
+</div>
