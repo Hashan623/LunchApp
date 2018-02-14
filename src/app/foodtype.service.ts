@@ -1,8 +1,7 @@
 //import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
-import { UUID } from 'angular2-uuid';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 export class FoodtypeService {
@@ -10,6 +9,8 @@ export class FoodtypeService {
   ID: string
 
   constructor(private db: AngularFireDatabase) { }
+
+  uuid;
 
   // getFoodtypesList() {
   //   return this.db.list('/foodtypes', {
@@ -28,12 +29,11 @@ export class FoodtypeService {
     });
   }
 
-  create(foodtype) {
-    this.ID = UUID.UUID();
-   // this.db.list('/foodtypes').push(foodtype);
-   this.db.database.ref('/foodtypes').child(this.ID).set(foodtype);
-
-
+  create(foodtype, uuid) {
+    this.uuid = uuid;
+    foodtype.UUID = uuid;
+    this.db.database.ref('/foodtypes').child(this.uuid).set(foodtype)
+    // this.db.list('/address').push(address);
   }
 
   update(foodtypeId, foodtype) {

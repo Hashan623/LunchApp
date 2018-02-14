@@ -42,16 +42,15 @@
 
       <div class="form-row">
 
-      <div class="form-group col-md-6">
-        <label for="outlet">Outlet</label>
-         <select #outlet="ngModel" [(ngModel)]="fooddetail.outlet"  name="outlet" id="outlet" class="form-control" required>
-          <option value="">Select...</option>
-          <option *ngFor="let o of outlets$ | async" [ngValue]="o">
-            {{ o.name }}
-
-          </option>
-        </select>
-        <!-- <select #keey="ngModel" [(ngModel)]="fooddetail.keey" [(ngModel)]="fooddetail.outlet" name="keey" id="keey" class="form-control">
+        <div class="form-group col-md-6">
+          <label for="outlet">Outlet</label>
+          <select #outlet="ngModel" [(ngModel)]="fooddetail.outlet" name="outlet" id="outlet" class="form-control" required>
+            <option value="">Select...</option>
+            <option *ngFor="let o of outlets$ | async" [ngValue]="o">
+              {{ o.name }}
+            </option>
+          </select>
+          <!-- <select #keey="ngModel" [(ngModel)]="fooddetail.keey" [(ngModel)]="fooddetail.outlet" name="keey" id="keey" class="form-control">
 
             <option *ngFor="let o of outlets$ | async" [value]="o.$key" >
 
@@ -60,13 +59,13 @@
           </select> -->
 
 
-        <!-- <div class="alert alert-danger" *ngIf="outlet.touched && outlet.invalid">
+          <!-- <div class="alert alert-danger" *ngIf="outlet.touched && outlet.invalid">
           Outlet is required.
         </div> -->
 
-      </div>
+        </div>
 
-      <!-- <div class="form-group col-md-6">
+        <!-- <div class="form-group col-md-6">
           <label for="keey">Outlet</label>
           <select #keey="ngModel" [(ngModel)]="fooddetail.keey" name="keey" id="keey" class="form-control">
             <option value="">Select...</option>
@@ -76,14 +75,14 @@
           </select>
 
         </div>-->
-    </div>
+      </div>
 
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="foodType">Food Type</label>
           <select #foodType="ngModel" [(ngModel)]="fooddetail.foodType" name="foodType" id="foodType" class="form-control" required>
             <option value="">Select...</option>
-            <option *ngFor="let f of foodtypes$ | async" [value]="f.name">
+            <option *ngFor="let f of foodtypes$ | async" [value]="f.UUID">
               {{ f.name }}
             </option>
           </select>

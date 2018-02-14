@@ -23,6 +23,9 @@ export class FoodDetailFormComponent implements OnInit {
 
   outletkey$;
 
+  uuid: string = UUID.UUID();
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -33,23 +36,23 @@ export class FoodDetailFormComponent implements OnInit {
     this.outlets$ = outletService.getOutletList();
     this.foodtypes$ = foodTypeService.getFoodtypesList();
 
-    this.outletkey$ = outletService.getOutletkeyListnew();
-
     this.id = this.route.snapshot.paramMap.get('id');
+
     this.ngOnInit
+
     if (this.id) this.fooddetailService.get(this.id).take(1).subscribe(o => this.fooddetail = o);
 
 
    }
 
-  save(outlet,address) {
-
+  save(outlet,address, uuid) {
     if (this.id) this.fooddetailService.update(this.id, outlet);
-    else  this.fooddetailService.create(this.fooddetail);
+    else this.fooddetailService.create(this.fooddetail, this.uuid);
 
     this.router.navigate(['/admin/food/fooddetail']);
   }
 
   ngOnInit() {
   }
+
 }

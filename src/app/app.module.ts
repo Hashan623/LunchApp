@@ -1,3 +1,4 @@
+import { XxxService } from './xxx.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { FooddetailService } from './fooddetail.service';
 import { FoodtypeService } from './foodtype.service';
@@ -47,6 +48,12 @@ import { FoodDetailFormComponent } from './admin/food/food-detail/food-detail-fo
 import { OutletAuthGuard } from './outlet-auth-guard.service';
 import { OrdersFormComponent } from './admin/Order/orders-form/orders-form.component';
 import { OrdersViewComponent } from './admin/Order/orders-view/orders-view.component';
+import { DetailTypeComponent } from './detail-type/detail-type.component';
+
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -73,9 +80,19 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodDetailViewComponent,
     FoodDetailFormComponent,
     OrdersFormComponent,
-    OrdersViewComponent
+    OrdersViewComponent,
+    DetailTypeComponent,
+
+    
   ],
   imports: [
+
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule,
+
     BrowserModule,
     FormsModule,
     // AgmCoreModule.forRoot({
@@ -92,6 +109,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     //UniqueId,
     NgbModule.forRoot(),
     RouterModule.forRoot([
+
+      {path: 'xxx', component: DetailTypeComponent},
+
       {path: '', component: HomeComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
@@ -174,7 +194,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     RiderService,
     FoodtypeService,
     FooddetailService,
-    OrderService
+    OrderService,
+    XxxService
   ],
   bootstrap: [AppComponent]
 })

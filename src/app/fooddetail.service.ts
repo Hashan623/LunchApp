@@ -5,9 +5,8 @@ import { UUID } from 'angular2-uuid';
 @Injectable()
 export class FooddetailService {
 
-
   //ID: string = UUID.UUID();
-  ID: string
+  uuid;
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -20,14 +19,16 @@ export class FooddetailService {
   //   });
   // }
 
+
   // create(fooddetail) {
   //  this.db.list('/fooddetails').push(fooddetail);
   // // this.db.list('/address').push(address);
   // }
 
-  create(fooddetail) {
-    this.ID = UUID.UUID();
-    this.db.database.ref('/fooddetails').child(this.ID).set(fooddetail);
+  create(fooddetail, uuid) {
+    this.uuid = uuid;
+    fooddetail.UUID = uuid;
+    this.db.database.ref('/fooddetails').child(this.uuid).set(fooddetail)
   }
 
   update(fooddetailId, fooddetail) {
