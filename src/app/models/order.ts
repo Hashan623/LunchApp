@@ -1,6 +1,7 @@
 export class Order {
 
-  time: string;
+  uuid: string;
+  time: any;
   date: number;
   outletname: string;
   status: string;

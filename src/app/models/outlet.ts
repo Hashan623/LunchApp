@@ -1,5 +1,8 @@
 
 export class Outlet {
+
+  uuid: string;
+
     $key: string;
     name: string;
     outletphone: number;

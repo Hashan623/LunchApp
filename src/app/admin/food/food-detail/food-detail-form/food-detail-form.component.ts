@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take';
 import { BrowserModule } from '@angular/platform-browser';
+import { UUID } from 'angular2-uuid';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class FoodDetailFormComponent implements OnInit {
   id;
   outlets$;
   foodtypes$;
+
+  ID: string;
 
   outletkey$;
 
@@ -35,11 +38,14 @@ export class FoodDetailFormComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.ngOnInit
     if (this.id) this.fooddetailService.get(this.id).take(1).subscribe(o => this.fooddetail = o);
+
+
    }
 
   save(outlet,address) {
+
     if (this.id) this.fooddetailService.update(this.id, outlet);
-    else this.fooddetailService.create(this.fooddetail);
+    else  this.fooddetailService.create(this.fooddetail);
 
     this.router.navigate(['/admin/food/fooddetail']);
   }

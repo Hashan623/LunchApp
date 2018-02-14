@@ -2,13 +2,16 @@
 import { Injectable } from '@angular/core';
 
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class FoodtypeService {
 
+  ID: string
+
   constructor(private db: AngularFireDatabase) { }
 
-  // getFoodtypesList() { 
+  // getFoodtypesList() {
   //   return this.db.list('/foodtypes', {
   //     query: {
   //       orderByChild: 'name'
@@ -16,7 +19,7 @@ export class FoodtypeService {
   //   });
   // }
 
-  getFoodtypesList() { 
+  getFoodtypesList() {
     return this.db.list('/foodtypes', {
       query: {
         orderByChild: 'isMainMenu',
@@ -26,8 +29,11 @@ export class FoodtypeService {
   }
 
   create(foodtype) {
-   this.db.list('/foodtypes').push(foodtype);
-  // this.db.list('/address').push(address);
+    this.ID = UUID.UUID();
+   // this.db.list('/foodtypes').push(foodtype);
+   this.db.database.ref('/foodtypes').child(this.ID).set(foodtype);
+
+
   }
 
   update(foodtypeId, foodtype) {

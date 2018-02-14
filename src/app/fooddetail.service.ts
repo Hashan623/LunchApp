@@ -4,12 +4,14 @@ import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class FooddetailService {
-  
-  ID: string = UUID.UUID();
+
+
+  //ID: string = UUID.UUID();
+  ID: string
 
   constructor(private db: AngularFireDatabase) { }
 
-  // getFoodtypesList() { 
+  // getFoodtypesList() {
   //   return this.db.list('/foodtypes', {
   //     query: {
   //       orderByChild: 'isMainMenu',
@@ -24,7 +26,8 @@ export class FooddetailService {
   // }
 
   create(fooddetail) {
-    this.db.database.ref('/fooddetails').child(this.ID).set(fooddetail)
+    this.ID = UUID.UUID();
+    this.db.database.ref('/fooddetails').child(this.ID).set(fooddetail);
   }
 
   update(fooddetailId, fooddetail) {

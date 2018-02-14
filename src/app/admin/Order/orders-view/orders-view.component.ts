@@ -51,11 +51,7 @@ export class OrdersViewComponent implements OnInit, OnDestroy {
 
     filter(query: String) {
       let filteredOrders = (query) ?
-        this.orders.filter(o => o.time.toLowerCase().includes(query.toLowerCase())) :
-        this.orders;
-
-        let filteredOrdersx = (query) ?
-        this.orders.filter(o => o.status.toLowerCase().includes(query.toLowerCase())) :
+        this.orders.filter(o => o.date.toString().includes(query.toLowerCase())) :
         this.orders;
 
         this.initializeTable(filteredOrders);

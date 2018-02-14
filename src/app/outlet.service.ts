@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 import {Address} from './models/address';
 
+import { UUID } from 'angular2-uuid';
+
 @Injectable()
 export class OutletService {
+  ID: string
 
   private addressPath: string = '/address';
 
@@ -38,7 +41,14 @@ export class OutletService {
   }
 
   create(outlet, address: Address) {
-   this.db.list('/outlets').push(outlet);
+
+    this.ID = UUID.UUID();
+    this.db.database.ref('/outlets').child(this.ID).set(outlet);
+   //this.db.list('/outlets').push(outlet);
+
+
+
+
   // this.db.list('/address').push(address);
 
      const addresses = this.db.list('/address');

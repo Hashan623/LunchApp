@@ -16,14 +16,23 @@
     </p>
 
     <data-table  id="persons-grid"
- headerTitle="Orders"
+      headerTitle="Orders"
       [items]="items"
       [itemCount]="itemCount"
       (reload)="reloadItems($event)"
 
 
-      [rowTooltip]="rowTooltip"
+      [limit]="20"
+
+      [sortBy]="'time'"
+      [sortAsc]="false"
+
+      [indexColumnHeader]="'#'"
+
+
     >
+
+
 
     <data-table-column
       [property]="'time'"
@@ -44,7 +53,7 @@
     <data-table-column
       [property]="'outletname'"
       [header]="'Outlet Name'"
-      [sortable]="true"
+
       [resizable]="true"
     >
     </data-table-column>
@@ -52,7 +61,7 @@
     <data-table-column
       [property]="'status'"
       [header]="'Status'"
-      [sortable]="true"
+
       [resizable]="true"
     >
     </data-table-column>
@@ -61,7 +70,7 @@
       [property]="'orderdiscription'"
       [header]="'Order Discription'"
       [width]="200"
-      [sortable]="true"
+
       [resizable]="true"
     >
     </data-table-column>
@@ -70,7 +79,7 @@
     [property]="'deliveryaddress'"
     [header]="'Delivery Address'"
     [width]="200"
-    [sortable]="true"
+
     [resizable]="true"
     >
     </data-table-column>
@@ -80,7 +89,7 @@
     <data-table-column
       [property]="'price'"
       [header]="'Price'"
-      [sortable]="true"
+
       [resizable]="true">
     </data-table-column>
 

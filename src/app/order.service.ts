@@ -1,19 +1,21 @@
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Order } from './models/order';
-
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class OrderService {
 
+  ID: string
 
   constructor(private db: AngularFireDatabase) { }
 
 
 
       create(order) {
-
-         this.db.list('/orders').push(order);
+         this.ID = UUID.UUID();
+       //  this.db.list('/orders').push(order);
+         this.db.database.ref('/orders').child(this.ID).set(order);
 
       }
 
