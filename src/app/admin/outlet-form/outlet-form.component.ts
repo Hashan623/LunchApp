@@ -8,6 +8,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MouseEvent } from '@agm/core';
 
+import { UUID } from 'angular2-uuid';
+
 @Component({
   selector: 'outlet-form',
   templateUrl: './outlet-form.component.html',
@@ -20,6 +22,8 @@ export class OutletFormComponent implements OnInit {
 
 address: Address = new Address();
 
+uuid: string = UUID.UUID();
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -30,9 +34,11 @@ address: Address = new Address();
     if (this.id) this.outletService.get(this.id).take(1).subscribe(o => this.outlet = o);
    }
 
-  save(outlet,address) {
+  save(outlet,address, uuid) {
     if (this.id) this.outletService.update(this.id, outlet);
-    else this.outletService.create(this.outlet,this.address);
+    else this.outletService.create(this.outlet,this.address, this.uuid);
+
+
 
     this.address = new Address();
 

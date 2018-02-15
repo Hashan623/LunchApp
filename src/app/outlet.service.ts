@@ -12,7 +12,7 @@ export class OutletService {
 
   private addressPath: string = '/address';
 
-
+  uuid;
   address: FirebaseObjectObservable<Address> = null;
   addresses: FirebaseListObservable<Address[]> = null;
 
@@ -27,16 +27,17 @@ export class OutletService {
   }
 
 
-  
+
   getAddress(key: string): FirebaseObjectObservable<Address> {
     this.address = this.db.object(`${this.addressPath}/${key}`);
     return this.address;
   }
 
-  create(outlet, address: Address) {
+  create(outlet, address: Address, uuid) {
 
-    this.ID = UUID.UUID();
-    this.db.database.ref('/outlets').child(this.ID).set(outlet);
+    this.uuid = uuid;
+    outlet.UUID = uuid;
+    this.db.database.ref('/outlets').child(this.uuid).set(outlet);
    //this.db.list('/outlets').push(outlet);
 
 
