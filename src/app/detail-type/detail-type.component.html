@@ -16,7 +16,7 @@
     <select  name="foodDetail" id="foodDetail" class="form-control" required>
       <option value="">Select...</option>
       <option *ngFor="let f of selectedData$ | async" [value]="f.UUID">
-        {{ f.foodType }}
+        {{ f.fname }}
       </option>
     </select>
   </div>
