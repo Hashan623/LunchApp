@@ -54,6 +54,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { UserlevelsFormComponent } from './admin/Userlevels/userlevels-form/userlevels-form.component';
+import { UserlevelsService } from './userlevels.service';
+import { UserlevelsViewComponent } from './admin/Userlevels/userlevels-view/userlevels-view.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -82,8 +85,10 @@ const googleMapsCore = AgmCoreModule.forRoot({
     OrdersFormComponent,
     OrdersViewComponent,
     DetailTypeComponent,
+    UserlevelsFormComponent,
+    UserlevelsViewComponent,
 
-    
+
   ],
   imports: [
 
@@ -182,6 +187,18 @@ const googleMapsCore = AgmCoreModule.forRoot({
         path: 'admin/order/orders/:id', component: OrdersFormComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'admin/userlevels/userlevelss', component: UserlevelsViewComponent,
+         canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/userlevels/userlevelss/new', component: UserlevelsFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/userlevels/userlevelss/:id', component: UserlevelsFormComponent,
+        canActivate: [AuthGuard]
+      },
     ])
   ],
   providers: [
@@ -195,7 +212,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodtypeService,
     FooddetailService,
     OrderService,
-    XxxService
+    XxxService,
+    UserlevelsService
   ],
   bootstrap: [AppComponent]
 })
