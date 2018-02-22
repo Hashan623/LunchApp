@@ -1,0 +1,52 @@
+
+<div style="margin: auto; max-width: 1500px; margin-bottom: 50px;">
+
+
+
+
+
+      <p>
+        <a routerLink="/admin/userlevels/userlevelss/new" class="btn btn-primary">Add New UserLevel</a>
+      </p>
+      <p>
+        <input
+        #query
+        (keyup)="filter(query.value)"
+        type="text" class="form-control" placeholder="Search...">
+      </p>
+
+      <data-table  id="persons-grid"
+        headerTitle="User Levels"
+        [items]="items"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)"
+
+      >
+
+
+
+      <data-table-column
+        [property]="'userlevelname'"
+        [header]="'Userlevel Name'"
+        [sortable]="true"
+        [resizable]="true"
+      >
+      </data-table-column>
+
+
+      <data-table-column
+        [property]="'$key'"
+      >
+      <ng-template #dataTableCell let-item="item">
+      <a [routerLink]="['/admin/userlevels/userlevelss/', item.$key]">Edit</a>
+      </ng-template>
+      </data-table-column>
+
+
+      </data-table>
+
+
+      </div>
+
+
+

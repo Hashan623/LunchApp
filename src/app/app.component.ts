@@ -1,3 +1,4 @@
+import { UUID } from 'angular2-uuid';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -9,17 +10,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor (private userService: UserService, private auth: AuthService, router: Router) {
+  list;
+  constructor(private userService: UserService, private auth: AuthService, router: Router) {
     auth.user$.subscribe(user => {
       if (!user) return;
+      let userDetails = userService.get(user.uid);
 
-        userService.save(user);
+      this.list = userDetails.subscribe(item => {
+        if (item.email != null) {
+          //console.log(item)                                         Dont remove this if condition(Dasun Mendis)
+        } else {
+          userService.save(user);
+        }
+      });
 
-        let returnUrl = localStorage.getItem('returnUrl');
-        if (!returnUrl) return;
+      let returnUrl = localStorage.getItem('returnUrl');
+      if (!returnUrl) return;
 
-        localStorage.removeItem('returnUrl');
-        router.navigateByUrl(returnUrl);
+      localStorage.removeItem('returnUrl');
+      router.navigateByUrl(returnUrl);
     });
   }
 
