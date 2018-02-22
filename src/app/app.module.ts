@@ -1,3 +1,4 @@
+import { ComponentGroupService } from './component-group.service';
 import { XxxService } from './xxx.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { FooddetailService } from './fooddetail.service';
@@ -54,6 +55,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { ComponentGroupComponent } from './admin/component-group/component-group.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -82,6 +84,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     OrdersFormComponent,
     OrdersViewComponent,
     DetailTypeComponent,
+    ComponentGroupComponent,
 
     
   ],
@@ -182,6 +185,10 @@ const googleMapsCore = AgmCoreModule.forRoot({
         path: 'admin/order/orders/:id', component: OrdersFormComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'admin/component-group', component: ComponentGroupComponent,
+        canActivate: [AuthGuard]
+      },
     ])
   ],
   providers: [
@@ -195,7 +202,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodtypeService,
     FooddetailService,
     OrderService,
-    XxxService
+    XxxService,
+    ComponentGroupService
   ],
   bootstrap: [AppComponent]
 })
