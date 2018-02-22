@@ -1,5 +1,7 @@
 
 export class Rider {
+
+  uuid: string;
     name: string;
     phone: number;
     imageUrl: string;

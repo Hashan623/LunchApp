@@ -1,0 +1,85 @@
+
+
+
+<div style="margin: auto; max-width: 1500px; margin-bottom: 50px;">
+
+
+
+      <!-- <p>
+        <a routerLink="/admin/user/users/new" class="btn btn-primary">Add Users</a>
+      </p> -->
+
+
+      <p>
+        <input
+        #query
+        (keyup)="filter(query.value)"
+        type="text" class="form-control" placeholder="Search...">
+      </p>
+
+      <data-table  id="persons-grid"
+        headerTitle="Users"
+        [items]="items"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)"
+
+
+      >
+
+      <data-table-column
+      [property]="'name'"
+      [header]="'Name'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+      <data-table-column
+        [property]="'uname'"
+        [header]="'User Name'"
+        [sortable]="true"
+        [resizable]="true"
+      >
+      </data-table-column>
+
+      <data-table-column
+        [property]="'email'"
+        [header]="'Email'"
+        [sortable]="true"
+        [resizable]="true"
+      >
+      </data-table-column>
+
+      <data-table-column
+        [property]="'password'"
+        [header]="'Password'"
+
+        [resizable]="true"
+      >
+      </data-table-column>
+
+      <data-table-column
+        [property]="'userlevelname'"
+        [header]="'User Level'"
+
+        [resizable]="true"
+      >
+      </data-table-column>
+
+
+      <data-table-column
+        [property]="'$key'"
+      >
+      <ng-template #dataTableCell let-item="item">
+      <a [routerLink]="['/admin/user/users/', item.$key]">Edit</a>
+      </ng-template>
+      </data-table-column>
+
+
+      </data-table>
+
+
+      </div>
+
+
+

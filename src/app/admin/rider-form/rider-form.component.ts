@@ -6,6 +6,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take';
 
 import {Address} from '../../models/address';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-rider-form',
@@ -17,6 +18,7 @@ export class RiderFormComponent implements OnInit {
   id;
 
   address: Address = new Address();
+  uuid: string = UUID.UUID();
 
   constructor(
     private router: Router,
@@ -28,9 +30,9 @@ export class RiderFormComponent implements OnInit {
     if (this.id) this.riderService.get(this.id).take(1).subscribe(o => this.rider = o);
    }
 
-  save(rider,address) {
+  save(rider, address, uuid) {
     if (this.id) this.riderService.update(this.id, rider);
-    else this.riderService.create(this.rider,this.address);
+    else this.riderService.create(this.rider,this.address, this.uuid);
 
     this.address = new Address();
 

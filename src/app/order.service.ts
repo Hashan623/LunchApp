@@ -10,12 +10,15 @@ export class OrderService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  uuid;
 
+      create(order, uuid) {
 
-      create(order) {
-         this.ID = UUID.UUID();
+         this.uuid = uuid;
+         order.UUID = uuid;
        //  this.db.list('/orders').push(order);
-         this.db.database.ref('/orders').child(this.ID).set(order);
+         this.db.database.ref('/orders').child(this.uuid).set(order);
+
 
       }
 
@@ -31,15 +34,4 @@ export class OrderService {
         return this.db.object('/orders/' + orderId)
       }
 
-      //  updateRider(active: string, rider: Rider): void {
-      //   this.db.object('riders/'+active).update(rider);
-      //  }
-      // private handleError(error) {
-      // console.log(error);
-      // }
-
-      // updateActive(riderId: any, active: string): void {
-      //   this.db.object('/riders/' + riderId)
-      //     .update({ content: active, active: riderId.active });
-      // }
     }

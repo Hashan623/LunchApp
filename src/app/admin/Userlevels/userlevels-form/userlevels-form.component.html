@@ -1,0 +1,23 @@
+
+
+
+
+<div class="row">
+  <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+
+          <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="userlevelname">User Level Name</label>
+            <input #userlevelname="ngModel" [(ngModel)]="userlevels.userlevelname" name="userlevelname" id="userlevelname" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="userlevelname.touched && userlevelname.invalid">
+              user level name is required!
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
+        </form>
+  </div>
+
+</div>

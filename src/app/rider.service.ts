@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import { Rider } from './models/rider';
 
 import { Address } from './models/address';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class RiderService {
-
+  uuid;
 
   private addressPath: string = '/address';
 
@@ -24,10 +25,14 @@ export class RiderService {
   }
 
 
-  create(rider, address: Address) {
+  create(rider, address: Address, uuid) {
     rider.googleid = 'null';
     rider.active = 'false';
-    this.db.list('/riders').push(rider);
+
+    this.uuid = uuid;
+    rider.UUID = uuid;
+    this.db.database.ref('/riders').child(this.uuid).set(rider)
+  //  this.db.list('/riders').push(rider);
 
     const addresses = this.db.list('/address');
     addresses.push(address);

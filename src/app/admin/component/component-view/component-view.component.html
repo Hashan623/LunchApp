@@ -1,0 +1,68 @@
+
+
+<div style="margin: auto; max-width: 1500px; margin-bottom: 50px;">
+
+
+          <p>
+            <a routerLink="/admin/component/components/new" class="btn btn-primary">Add New Component</a>
+          </p>
+          <p>
+            <input
+            #query
+            (keyup)="filter(query.value)"
+            type="text" class="form-control" placeholder="Search...">
+          </p>
+
+          <data-table  id="persons-grid"
+            headerTitle="Component"
+            [items]="items"
+            [itemCount]="itemCount"
+            (reload)="reloadItems($event)"
+
+          >
+
+
+          <data-table-column
+            [property]="'componentName'"
+            [header]="'Component Name'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          </data-table-column>
+
+
+          <data-table-column
+          [property]="'url'"
+          [header]="'URL'"
+          [sortable]="true"
+          [resizable]="true"
+        >
+        </data-table-column>
+
+
+         <data-table-column
+          [property]="'isActive'"
+          [header]="'isActive'"
+          [sortable]="true"
+          [resizable]="true"
+        >
+
+         </data-table-column>
+
+          <data-table-column
+            [property]="'$key'"
+          >
+          <ng-template #dataTableCell let-item="item">
+          <a [routerLink]="['/admin/component/components/', item.$key]">Edit</a>
+          </ng-template>
+          </data-table-column>
+
+
+          </data-table>
+
+
+          </div>
+
+
+
+
