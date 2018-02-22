@@ -57,6 +57,12 @@ import {HttpModule} from '@angular/http';
 import { UserlevelsFormComponent } from './admin/Userlevels/userlevels-form/userlevels-form.component';
 import { UserlevelsService } from './userlevels.service';
 import { UserlevelsViewComponent } from './admin/Userlevels/userlevels-view/userlevels-view.component';
+import { UserFormComponent } from './admin/User/user-form/user-form.component';
+import { UsercrudService } from './usercrud.service';
+import { UserViewComponent } from './admin/User/user-view/user-view.component';
+import { ComponentFormComponent } from './admin/component/component-form/component-form.component';
+import { ComponentService } from './component.service';
+import { ComponentViewComponent } from './admin/component/component-view/component-view.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -87,6 +93,10 @@ const googleMapsCore = AgmCoreModule.forRoot({
     DetailTypeComponent,
     UserlevelsFormComponent,
     UserlevelsViewComponent,
+    UserFormComponent,
+    UserViewComponent,
+    ComponentFormComponent,
+    ComponentViewComponent,
 
 
   ],
@@ -199,6 +209,31 @@ const googleMapsCore = AgmCoreModule.forRoot({
         path: 'admin/userlevels/userlevelss/:id', component: UserlevelsFormComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'admin/user/users', component: UserViewComponent,
+         canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/user/users/new', component: UserFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/user/users/:id', component: UserFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/component/components', component: ComponentViewComponent,
+         canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/component/components/new', component: ComponentFormComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'admin/component/components/:id', component: ComponentFormComponent,
+        canActivate: [AuthGuard]
+      },
+
     ])
   ],
   providers: [
@@ -206,14 +241,16 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AuthGuard,
     AdminAuthGuard,
     OutletAuthGuard,
-    UserService,
     OutletService,
     RiderService,
     FoodtypeService,
     FooddetailService,
     OrderService,
     XxxService,
-    UserlevelsService
+    UserlevelsService,
+    UsercrudService,
+    UserService,
+    ComponentService
   ],
   bootstrap: [AppComponent]
 })

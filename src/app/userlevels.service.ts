@@ -12,7 +12,17 @@ export class UserlevelsService {
 
   constructor(private db: AngularFireDatabase) { }
 
+
   uuid;
+
+
+  getuserlevelsList() {
+    return this.db.list('/userlevelss', {
+      query: {
+        orderByChild: 'userlevelname'
+      }
+    });
+  }
 
   create(userlevels, uuid) {
 

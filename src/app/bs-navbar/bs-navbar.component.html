@@ -54,7 +54,15 @@
 
           <li *ngIf="auth.user$ | async as user" class="nav-item">
           <a class="nav-link" routerLink="/admin/userlevels/userlevelss">Userlevels</a>
-      </li>
+          </li>
+
+          <li *ngIf="auth.user$ | async as user" class="nav-item">
+              <a class="nav-link" routerLink="/admin/user/users">Users</a>
+          </li>
+
+          <li *ngIf="auth.user$ | async as user" class="nav-item">
+              <a class="nav-link" routerLink="/admin/component/components">Component</a>
+         </li>
     </ul>
   </div>
 </nav>
