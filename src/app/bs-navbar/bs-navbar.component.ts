@@ -27,17 +27,17 @@ export class BsNavbarComponent {
 
     let userDetails = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
     console.log(userDetails)
-    userDetails.uid;
+    //userDetails.uid;
     //console.log(JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]')));
     //this.userDetails.subscribe(i => {this.userID = i.uid});
     
     this.userID = userDetails.uid;
     console.log(this.userID);
 
-    this.userLevel$ = this.getUserLevel(this.userID);
+    this.userLevel$ = this.test(this.userID);
 
-    this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
-    console.log('TEST 001 : ' +this.userLevel$);
+    //this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
+    console.log('TEST 001 : ' + this.userLevel$);
     // this.authState.subscribe((user: firebase.User) => {
 
     //   console.log('user is: ' + user.uid);
@@ -58,12 +58,22 @@ export class BsNavbarComponent {
 
   }
 
-  getUserLevel(value:string) {
+  async test(value:string)
+  {
+    console.log('function 01:'+value);
+    this.userLevel$ = await this.getUserLevel(value);
+
+    console.log('function 02:'+ this.userLevel$);
+    this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
+
+  }
+
+
+  async getUserLevel(value:string) {
     console.log('function :'+value);
-    return this.db.list('/users', {
+    return this.db.list('/user/', {
       query: {
-        orderByChild: 'uid',
-        equalTo: value
+        orderByChild: 'uid'
       }
     });
   }

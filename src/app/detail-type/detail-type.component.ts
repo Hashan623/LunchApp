@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import { XxxService } from '../xxx.service';
 
 @Component({
   selector: 'app-detail-type',
