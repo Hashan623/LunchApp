@@ -34,24 +34,12 @@ export class CheckboxComponent implements OnInit {
         com.isActive = snapshot.isActive;
         com.itemName = snapshot.componentName;
         com.url = snapshot.url;
-        com.id = snapshot.uuid;
+        com.id = snapshot.UUID;
         this.observables.push(com);
       });
     });
     console.log(this.observables);
-
-    //console.log(this.getUsers());
   }
-
-  //    getUsers(): Observable<any> {
-  //     let observables = [];
-  //     for (let user of this.components$ ) {
-  //         observables.push(this.db.object(user))
-  //     }    
-  //     console.log(observables);
-
-  //     return Observable.combineLatest(...observables, (...results) => { return results });
-  // }
 
   ngOnInit() {
     // this.dropdownList = [
