@@ -1,27 +1,30 @@
 <div class="row">
   <div class="col-md-8">
-    <form #f="ngForm" [formGroup]="myForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+    <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
       <div class="form-row">
-        <div class="form-group col-md-6" [formGroupName]="i" ngModelGroup="group">
+        <div class="form-group col-md-6">
           <label for="name">Group Name</label>
-          <input #gName="ngModel" [(ngModel)]="group.gName" name="groupName" id="groupName" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="gName.touched && gName.invalid">
+          <input #componentGroupName="ngModel" [(ngModel)]="ComponentGroup.componentGroupName" name="componentGroupName" id="componentGroupName" type="text" class="form-control" required>
+          <div class="alert alert-danger" *ngIf="componentGroupName.touched && componentGroupName.invalid">
             Group Name is required!
           </div>
         </div>
       </div>
 
       <div>
-        <div class="form-group col-md-6" formArrayName="componentList">
-          <label for="name">Components</label>
-          <div *ngFor="let c of components$ | async; let i=index">
-            <input type="checkbox" /> {{c.componentName}}
-          </div>
-        </div>
+          <label for="name">Select the components for this User Type</label>
+          <angular2-multiselect [data]="observables" [(ngModel)]="ComponentGroup.component" name="component"
+    
+          [settings]="dropdownSettings" 
+          (onSelect)="onItemSelect($event)" 
+          (onDeSelect)="OnItemDeSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
       </div>
 
-      <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
       <br>
+      <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
+      
     </form>
   </div>
 </div>

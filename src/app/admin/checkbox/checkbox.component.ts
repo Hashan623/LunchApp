@@ -20,8 +20,7 @@ export class CheckboxComponent implements OnInit {
 
   constructor(private componentGroupService: ComponentGroupService
     //, private com : ComponentModel
-  ) 
-  {
+  ) {
     this.components$ = componentGroupService.getComponentNamesList();
 
     console.log("Fetching agency data");
