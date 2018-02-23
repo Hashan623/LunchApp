@@ -68,6 +68,7 @@ import { ComponentService } from './component.service';
 import { ComponentViewComponent } from './admin/component/component-view/component-view.component';
 import { CheckboxComponent } from './admin/checkbox/checkbox.component';
 import { ComponentModel } from './models/componentModel';
+import { UserLevelPersmissonComponent } from './admin/user-level-persmisson/user-level-persmisson.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -104,6 +105,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     ComponentFormComponent,
     ComponentViewComponent,
     CheckboxComponent,
+    UserLevelPersmissonComponent,
 
 
   ],
@@ -246,6 +248,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
       },
       {
         path: 'admin/checkbox', component: CheckboxComponent,
+      },
+      {
+        path: 'admin/UserLevelPersmisson', component: UserLevelPersmissonComponent,
       },
 
     ])

@@ -26,8 +26,6 @@ export class ComponentGroupComponent implements OnInit {
   constructor(private componentGroupService: ComponentGroupService, private db: AngularFireDatabase) {
     this.components$ = componentGroupService.getComponentNamesList();
 
-    console.log("Fetching agency data");
-    //let observables = [];
     this.components$.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
 
@@ -40,9 +38,7 @@ export class ComponentGroupComponent implements OnInit {
         this.observables.push(com);
       });
     });
-    console.log(this.observables);
   }
-
 
   ngOnInit() {
     this.selectedItems = [];

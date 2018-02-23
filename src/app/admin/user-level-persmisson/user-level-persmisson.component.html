@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-8">
+    <form #f="ngForm" (ngSubmit)="save(f.value)" style="width: 750px;">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="userLevel">Select the User Level</label>
+          <select #userLevel="ngModel" [(ngModel)]="userPersmission.userLevel" name="userLevel" id="userLevel" class="form-control" required>
+            <option *ngFor="let u of userLevels$ | async" [ngValue]="u">
+              {{ u.userlevelname }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="name">Select the Component Groups for this User Type</label>
+        <angular2-multiselect [data]="observables" [(ngModel)]="userPersmission.userGroup" name="userGroup" [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)" 
+          (onDeSelect)="OnItemDeSelect($event)" 
+          (onSelectAll)="onSelectAll($event)" 
+          (onDeSelectAll)="onDeSelectAll($event)">
+        </angular2-multiselect>
+      </div>
+
+      <br>
+      <button class="btn btn-outline-primary form-group col-md-3" [disabled]="!f.valid">Submit</button>
+
+    </form>
+  </div>
+</div>
