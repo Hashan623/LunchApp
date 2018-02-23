@@ -22,6 +22,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from "angular-4-data-table";
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 //import { UniqueId } from "unique-id-generator";
 
 import { AppComponent } from './app.component';
@@ -65,6 +66,8 @@ import { UserViewComponent } from './admin/User/user-view/user-view.component';
 import { ComponentFormComponent } from './admin/component/component-form/component-form.component';
 import { ComponentService } from './component.service';
 import { ComponentViewComponent } from './admin/component/component-view/component-view.component';
+import { CheckboxComponent } from './admin/checkbox/checkbox.component';
+import { ComponentModel } from './models/componentModel';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -100,6 +103,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     UserViewComponent,
     ComponentFormComponent,
     ComponentViewComponent,
+    CheckboxComponent,
 
 
   ],
@@ -110,7 +114,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-
+    AngularMultiSelectModule,
     BrowserModule,
     FormsModule,
     // AgmCoreModule.forRoot({
@@ -240,6 +244,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
         path: 'admin/component/components/:id', component: ComponentFormComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'admin/checkbox', component: CheckboxComponent,
+      },
 
     ])
   ],
@@ -258,7 +265,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     UserlevelsService,
     UsercrudService,
     UserService,
-    ComponentService
+    ComponentService,
+    ComponentModel
   ],
   bootstrap: [AppComponent]
 })
