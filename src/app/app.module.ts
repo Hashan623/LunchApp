@@ -1,5 +1,4 @@
 import { ComponentGroupService } from './component-group.service';
-import { XxxService } from './xxx.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { FooddetailService } from './fooddetail.service';
 import { FoodtypeService } from './foodtype.service';
@@ -50,7 +49,6 @@ import { FoodDetailFormComponent } from './admin/food/food-detail/food-detail-fo
 import { OutletAuthGuard } from './outlet-auth-guard.service';
 import { OrdersFormComponent } from './admin/Order/orders-form/orders-form.component';
 import { OrdersViewComponent } from './admin/Order/orders-view/orders-view.component';
-import { DetailTypeComponent } from './detail-type/detail-type.component';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -66,7 +64,6 @@ import { UserViewComponent } from './admin/User/user-view/user-view.component';
 import { ComponentFormComponent } from './admin/component/component-form/component-form.component';
 import { ComponentService } from './component.service';
 import { ComponentViewComponent } from './admin/component/component-view/component-view.component';
-import { CheckboxComponent } from './admin/checkbox/checkbox.component';
 import { ComponentModel } from './models/componentModel';
 import { UserLevelPersmissonComponent } from './admin/user-level-persmisson/user-level-persmisson.component';
 
@@ -96,7 +93,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodDetailFormComponent,
     OrdersFormComponent,
     OrdersViewComponent,
-    DetailTypeComponent,
     ComponentGroupComponent,
     UserlevelsFormComponent,
     UserlevelsViewComponent,
@@ -104,7 +100,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
     UserViewComponent,
     ComponentFormComponent,
     ComponentViewComponent,
-    CheckboxComponent,
     UserLevelPersmissonComponent,
 
 
@@ -133,8 +128,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
     //UniqueId,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-
-      {path: 'xxx', component: DetailTypeComponent},
 
       {path: '', component: HomeComponent},
       {path: 'products', component: ProductsComponent},
@@ -247,9 +240,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
         canActivate: [AuthGuard]
       },
       {
-        path: 'admin/checkbox', component: CheckboxComponent,
-      },
-      {
         path: 'admin/UserLevelPersmisson', component: UserLevelPersmissonComponent,
       },
 
@@ -265,7 +255,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
     FoodtypeService,
     FooddetailService,
     OrderService,
-    XxxService,
     ComponentGroupService,
     UserlevelsService,
     UsercrudService,

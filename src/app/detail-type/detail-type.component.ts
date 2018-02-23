@@ -3,7 +3,6 @@ import { UUID } from 'angular2-uuid';
 import { FoodDetail } from './../models/fooddetail';
 import { FoodType } from './../models/foodtype';
 import { HttpModule } from '@angular/http';
-import { XxxService } from './../xxx.service';
 import { FoodtypeService } from './../foodtype.service';
 import { Component, OnInit } from '@angular/core';
 

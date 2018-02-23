@@ -12,7 +12,9 @@ export class UserService {
   constructor(private db: AngularFireDatabase) { }
 
   save(user: firebase.User) {
-    this.db.object('/users/' + user.uid).update({
+    this.db.object('/users/' + this.uuid).update({
+      uid : user.uid,
+      UUID : this.uuid,
       name: user.displayName,
       email: user.email
     });
