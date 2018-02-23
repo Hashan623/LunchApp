@@ -18,30 +18,25 @@ export class CheckboxComponent implements OnInit {
   observables = [];
   //com : ComponentModel;
 
-  constructor(private componentGroupService: ComponentGroupService, private com : ComponentModel) {
+  constructor(private componentGroupService: ComponentGroupService
+    //, private com : ComponentModel
+  ) 
+  {
     this.components$ = componentGroupService.getComponentNamesList();
 
     console.log("Fetching agency data");
     //let observables = [];
     this.components$.subscribe(snapshots => {
       snapshots.forEach(snapshot => {
-        //console.log(snapshot.componentName);
-        
-        //let com : ComponentModel;
-        //this.com.$key = snapshot.$key;
-        this.com.isActive = snapshot.isActive;
-        this.com.itemName = snapshot.componentName;
-        this.com.url = snapshot.url;
-        this.com.id = snapshot.uuid;
-        this.observables.push(this.com);
-        this.com.isActive  = '';
-        this.com.itemName = '';
-        this.com.url = '';
-        this.com.id = '';
-        //console.log("Array Length = ", this.observables.length); // See the length of the array growing ;)
+
+        let com = new ComponentModel;
+
+        com.isActive = snapshot.isActive;
+        com.itemName = snapshot.componentName;
+        com.url = snapshot.url;
+        com.id = snapshot.uuid;
+        this.observables.push(com);
       });
-      // EDIT
-      //this.getTrackerData();
     });
     console.log(this.observables);
 
