@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AppUser } from './../models/app-user';
 import { AuthService } from './../auth.service';
 import { Component, OnInit,enableProdMode} from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'bs-navbar',
@@ -17,51 +18,39 @@ export class BsNavbarComponent {
   userLevel$;
   userID;
   currentUser;
+  list;
   //enableProdMode();
   //userDetails;
   private authState: Observable<firebase.User>;
 
-  constructor(private auth: AuthService, private db: AngularFireDatabase,public afAuth: AngularFireAuth) {
+  constructor(private auth: AuthService, private db: AngularFireDatabase,public afAuth: AngularFireAuth,private userService: UserService) {
+    
     this.authState =  afAuth.authState;
     auth.appUser$.subscribe(appUser => {this.appUser = appUser});
 
-    let userDetails = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
-    console.log(userDetails)
-    //userDetails.uid;
-    //console.log(JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]')));
-    //this.userDetails.subscribe(i => {this.userID = i.uid});
-    
-    this.userID = userDetails.uid;
-    console.log(this.userID);
-
-    this.userLevel$ = this.test(this.userID);
-
-    //this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
-    console.log('TEST 001 : ' + this.userLevel$);
-    // this.authState.subscribe((user: firebase.User) => {
-
-    //   console.log('user is: ' + user.uid);
-    //   this.currentUser = user.uid;
-    //   this.userLevel$ = this.getUserLevel(user.uid);
-
-    //   this.userLevel$.subscribe(item => console.log(item.displayName));
+    //console.log(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
+    if(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]') != null)
+    {
+      let userDetails = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
+      console.log(userDetails)
       
-    //   //console.log(this.userLevel$);
-
-    // });
-
+        this.userID = userDetails.uid;
+        console.log(this.userID);
     
-    //console.log('first :' + this.userID);
-    // this.userLevel$ = this.getUserLevel(this.appUser.$key);
-    // console.log(this.appUser.$key);
-    // console.log(this.userLevel$);
+        let userDetailsts = userService.get(this.userID);
+    
+        this.list = userDetailsts.subscribe(item => {
+            console.log(item.userlevelname);
+        });
+    }
+    
 
   }
 
   async test(value:string)
   {
     console.log('function 01:'+value);
-    this.userLevel$ = await this.getUserLevel(value);
+    //this.userLevel$ = await this.getUserLevel(value);
 
     console.log('function 02:'+ this.userLevel$);
     this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
@@ -69,14 +58,7 @@ export class BsNavbarComponent {
   }
 
 
-  async getUserLevel(value:string) {
-    console.log('function :'+value);
-    return this.db.list('/user/', {
-      query: {
-        orderByChild: 'uid'
-      }
-    });
-  }
+ 
   
   getFooddetailsList(value:string) { 
     return this.db.list('/fooddetails', {

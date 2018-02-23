@@ -5,4 +5,5 @@ export class AppUser {
     email: string; 
     isAdmin: boolean;
     isOutlet: boolean;
+    userlevelname : string;
   }
