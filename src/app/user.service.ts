@@ -23,4 +23,30 @@ export class UserService {
   get(uid: string): FirebaseObjectObservable<AppUser> {
     return this.db.object('/users/' + uid);
   }
+
+  // getNavHeaderList(value: string): FirebaseObjectObservable<AppUser> {
+  //   console.log('UserLevel 2 : '+ value);
+  //   return this.db.object('/userPermissionGroup');
+  // }
+
+  getNavHeaderList(value:string) {
+    console.log('UserLevel 2 : '+ value);
+    return this.db.list('/userPermissionGroup', {
+      query: {
+        orderByChild: 'userLevelID',
+        equalTo : value
+      }
+    });
+  }
+
+  getNavDetailsList(value:string) {
+    console.log('UserLevel details : '+ value);
+    return this.db.list('/componentsGroup', {
+      query: {
+        orderByChild: 'UUID',
+        equalTo : value
+      }
+    });
+  }
+
 }

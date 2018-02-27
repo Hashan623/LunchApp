@@ -16,4 +16,14 @@ export class ComponentGroupService {
     });
   }
 
+  getNavHeaderList(value:string) {
+    console.log('UserLevel 2 : '+ value);
+    return this.db.list('/userPermissionGroup', {
+      query: {
+        orderByChild: 'userLevelID',
+        //equalTo : value
+      }
+    });
+  }
+
 }

@@ -67,6 +67,8 @@ import { ComponentService } from './component.service';
 import { ComponentViewComponent } from './admin/component/component-view/component-view.component';
 import { ComponentModel } from './models/componentModel';
 import { UserLevelPersmissonComponent } from './admin/user-level-persmisson/user-level-persmisson.component';
+import { ComponentGroup } from './models/componentGroup';
+import { Componentt } from './models/component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -261,7 +263,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     UsercrudService,
     UserService,
     ComponentService,
-    ComponentModel
+    ComponentModel,
+    ComponentGroup,
+    Componentt
   ],
   bootstrap: [AppComponent]
 })

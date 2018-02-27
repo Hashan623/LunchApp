@@ -40,7 +40,7 @@ export class UserLevelPersmissonComponent implements OnInit {
     let componentModelGroup = [];
 
     UserPersmission.userGroup.forEach(function(current_value) {
-
+      
       let componentModel = new ComponentGroup;
       componentModel.componentGroupName = current_value.itemName;
       componentModel.UUID = current_value.id;

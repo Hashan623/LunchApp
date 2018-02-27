@@ -24,6 +24,7 @@ export class AuthService {
     localStorage.setItem('returnUrl', returnUrl);
     
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    
   }
 
   logout() { 

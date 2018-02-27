@@ -5,8 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AppUser } from './../models/app-user';
 import { AuthService } from './../auth.service';
-import { Component, OnInit,enableProdMode} from '@angular/core';
+import { Component, OnInit, enableProdMode } from '@angular/core';
 import { UserService } from '../user.service';
+import { ComponentGroupService } from '../component-group.service';
+import { ComponentGroup } from '../models/componentGroup';
+import { Componentt } from '../models/component';
 
 @Component({
   selector: 'bs-navbar',
@@ -19,57 +22,82 @@ export class BsNavbarComponent {
   userID;
   currentUser;
   list;
-  //enableProdMode();
-  //userDetails;
+  userLevelID;
+  navHederList;
+  navDetailList;
+  navGroupDetailList = [];
+  navGroupHeaderList = [];
+
+
   private authState: Observable<firebase.User>;
 
-  constructor(private auth: AuthService, private db: AngularFireDatabase,public afAuth: AngularFireAuth,private userService: UserService) {
-    
-    this.authState =  afAuth.authState;
-    auth.appUser$.subscribe(appUser => {this.appUser = appUser});
+  constructor(private auth: AuthService, private db: AngularFireDatabase, public afAuth: AngularFireAuth, private userService: UserService, private comGroup: ComponentGroup, private componentt: Componentt) {
+
+    this.authState = afAuth.authState;
+    auth.appUser$.subscribe(appUser => { this.appUser = appUser });
 
     //console.log(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
-    if(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]') != null)
-    {
+    if (localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]') != null) {
+
       let userDetails = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
-      console.log(userDetails)
-      
-        this.userID = userDetails.uid;
-        console.log(this.userID);
-    
-        let userDetailsts = userService.get(this.userID);
-    
-        this.list = userDetailsts.subscribe(item => {
-            console.log(item.userlevelname);
-        });
+      //console.log(userDetails)
+
+      this.userID = userDetails.uid;
+      console.log(this.userID);
+
+      let userDetailsts = userService.get(this.userID);
+
+      this.list = userDetailsts.subscribe(item => {
+        this.userLevelID = item.userlevelname;
+        console.log(item.userlevelname);
+        if (item.userlevelname != null) {
+          this.navHederList = userService.getNavHeaderList(this.userLevelID);
+          //console.log(this.navHederList);
+          this.navHederList.subscribe(i => i.forEach(i => {
+            i.userGroup.forEach(a => {
+              console.log('UserLevel 10: ' + a.componentGroupName)
+              let componentModel = new ComponentGroup;
+              componentModel.componentGroupName = a.componentGroupName;
+              componentModel.UUID = a.UUID;
+              this.navGroupHeaderList.push(componentModel);
+            });
+          }));
+        }
+
+      });
     }
-    
-
   }
 
-  async test(value:string)
-  {
-    console.log('function 01:'+value);
-    //this.userLevel$ = await this.getUserLevel(value);
+  getNavDetails(value: string) {
+    this.navGroupDetailList = [];
+    this.navDetailList = this.userService.getNavDetailsList(value);
 
-    console.log('function 02:'+ this.userLevel$);
-    this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
+    this.navDetailList.subscribe(h => h.forEach(h => {
+      //console.log('UserLevel 20: '+h.component.url)
+      h.component.forEach(e => {
+        let component = new Componentt;
+        component.url = e.url;
+        component.componentName = e.componentName;
+        console.log('UserLevel 20: ' + e.componentName)
+        this.navGroupDetailList.push(component);
+      });
 
+    }));
+    return this.navGroupDetailList;
   }
 
-
- 
-  
-  getFooddetailsList(value:string) { 
+  getFooddetailsList(value: string) {
     return this.db.list('/fooddetails', {
-       query: {
-         orderByChild: 'foodType',
-         equalTo : value
-       }
+      query: {
+        orderByChild: 'foodType',
+        equalTo: value
+      }
     });
   }
 
   logout() {
+    this.navGroupDetailList = [];
+    this.navGroupHeaderList = [];
     this.auth.logout();
   }
 
