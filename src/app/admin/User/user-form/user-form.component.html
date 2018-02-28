@@ -48,14 +48,14 @@
               </div>
 
 		        <div class="form-group col-md-6">
-                <label for="userlevelname">User level Name</label>
-                 <select #userlevelname="ngModel" [(ngModel)]="user.userlevelname" name="userlevelname" id="userlevelname" class="form-control" required>
+                <label for="userLevelID">User level Name</label>
+                 <select #userLevelID="ngModel" [(ngModel)]="user.userLevelID" name="userLevelID" id="userLevelID" class="form-control" required>
                  <!-- <option value="">Select...</option> -->
                     <option *ngFor="let u of userlevelss$ | async" [value]="u.UUID">
                     {{ u.userlevelname }}
                     </option>
                 </select>
-              <div class="alert alert-danger" *ngIf="userlevelname.touched && userlevelname.invalid">
+              <div class="alert alert-danger" *ngIf="userLevelID.touched && userLevelID.invalid">
                   User level Name is required!
               </div>
            </div>

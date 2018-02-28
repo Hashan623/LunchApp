@@ -68,28 +68,11 @@ export class BsNavbarComponent {
     }
   }
 
-  getNavDetails(value: string) {
-    this.navGroupDetailList = [];
-    this.navDetailList = this.userService.getNavDetailsList(value);
-
-    this.navDetailList.subscribe(h => h.forEach(h => {
-      //console.log('UserLevel 20: '+h.component.url)
-      h.component.forEach(e => {
-        let component = new Componentt;
-        component.url = e.url;
-        component.componentName = e.componentName;
-        console.log('UserLevel 20: ' + e.componentName)
-        this.navGroupDetailList.push(component);
-      });
-
-    }));
-    return this.navGroupDetailList;
-  }
-
-  getFooddetailsList(value: string) {
-    return this.db.list('/fooddetails', {
+  getUserLevel(value:string) {
+    console.log('function :'+value);
+    return this.db.list('/users', {
       query: {
-        orderByChild: 'foodType',
+        orderByChild: 'uid',
         equalTo: value
       }
     });
