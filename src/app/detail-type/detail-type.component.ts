@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import { XxxService } from '../xxx.service';
 
 @Component({
   selector: 'app-detail-type',
@@ -26,8 +27,8 @@ export class DetailTypeComponent implements OnInit{
   foodDetails : FoodDetail[];
   _xxServices : XxxService;
 
-  constructor(private _foodTypeService: FoodtypeService, _xxService: XxxService) 
-  { 
+  constructor(private _foodTypeService: FoodtypeService, _xxService: XxxService)
+  {
     this.foodtypes$ = _foodTypeService.getFoodtypesList();
     this._xxServices = _xxService;
 

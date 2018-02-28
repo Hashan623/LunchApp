@@ -56,6 +56,14 @@
 </data-table-column>
 
 <data-table-column
+[property]="'radius'"
+[header]="'Radius'"
+[sortable]="true"
+[resizable]="true"
+>
+</data-table-column>
+
+<data-table-column
     [property]="'$key'"
 >
 <ng-template #dataTableCell let-item="item">

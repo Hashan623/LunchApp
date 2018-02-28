@@ -110,6 +110,19 @@
           </div>
         </div>
 
+
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+            <label for="radius">Radius</label>
+            <input #radius="ngModel" [(ngModel)]="outlet.radius" name="radius" id="radius" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="radius.touched && radius.invalid">
+                Radius is required!
+            </div>
+          </div>
+
+        </div>
+
 <br>
 <hr>
 

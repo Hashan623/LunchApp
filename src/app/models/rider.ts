@@ -14,4 +14,5 @@ export class Rider {
     subroad: string;
     mainroad: string;
     city: string;
+    radius: number;
   }

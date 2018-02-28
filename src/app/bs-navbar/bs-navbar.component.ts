@@ -17,55 +17,46 @@ import { Componentt } from '../models/component';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent {
+  navGroupHeaderList: any[];
+  navGroupDetailList: any[];
   appUser: AppUser;
   userLevel$;
   userID;
   currentUser;
-  list;
-  userLevelID;
-  navHederList;
-  navDetailList;
-  navGroupDetailList = [];
-  navGroupHeaderList = [];
-
-
+  //enableProdMode();
+  //userDetails;
   private authState: Observable<firebase.User>;
 
-  constructor(private auth: AuthService, private db: AngularFireDatabase, public afAuth: AngularFireAuth, private userService: UserService, private comGroup: ComponentGroup, private componentt: Componentt) {
+  constructor(private auth: AuthService, private db: AngularFireDatabase,public afAuth: AngularFireAuth) {
+    this.authState =  afAuth.authState;
+    auth.appUser$.subscribe(appUser => {this.appUser = appUser});
 
-    this.authState = afAuth.authState;
-    auth.appUser$.subscribe(appUser => { this.appUser = appUser });
+    let userDetails = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
+    console.log(userDetails)
+    userDetails.uid;
+    //console.log(JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]')));
+    //this.userDetails.subscribe(i => {this.userID = i.uid});
 
-    //console.log(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
-    if (localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]') != null) {
+    this.userID = userDetails.uid;
+    console.log(this.userID);
 
-      let userDetails = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyDmSX9Wki73m_rWrFXphMish-V75CcCG7k:[DEFAULT]'));
-      //console.log(userDetails)
+    this.userLevel$ = this.getUserLevel(this.userID);
 
-      this.userID = userDetails.uid;
-      console.log(this.userID);
+    this.userLevel$.subscribe(item => {console.log('test : '+ item.UUID)});
+    console.log('TEST 001 : ' +this.userLevel$);
+    // this.authState.subscribe((user: firebase.User) => {
 
-      let userDetailsts = userService.get(this.userID);
+    //   console.log('user is: ' + user.uid);
+    //   this.currentUser = user.uid;
+    //   this.userLevel$ = this.getUserLevel(user.uid);
 
-      this.list = userDetailsts.subscribe(item => {
-        this.userLevelID = item.userlevelname;
-        console.log(item.userlevelname);
-        if (item.userlevelname != null) {
-          this.navHederList = userService.getNavHeaderList(this.userLevelID);
-          //console.log(this.navHederList);
-          this.navHederList.subscribe(i => i.forEach(i => {
-            i.userGroup.forEach(a => {
-              console.log('UserLevel 10: ' + a.componentGroupName)
-              let componentModel = new ComponentGroup;
-              componentModel.componentGroupName = a.componentGroupName;
-              componentModel.UUID = a.UUID;
-              this.navGroupHeaderList.push(componentModel);
-            });
-          }));
-        }
+    //   this.userLevel$.subscribe(item => console.log(item.displayName));
 
-      });
-    }
+    //   //console.log(this.userLevel$);
+
+    // });
+
+
   }
 
   getUserLevel(value:string) {
